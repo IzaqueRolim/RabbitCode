@@ -34,7 +34,7 @@ public class Fase1 : MonoBehaviour {
 	public Text TextoEstrela2;
 
 	bool play;
-	float velocidade = 100;
+	float velocidade = 50;
 	public static bool vivo;
 	int indiceDestino = 0;
 
@@ -76,18 +76,21 @@ public class Fase1 : MonoBehaviour {
 
 			//DefineObstaculo (1,1);  // define posicoes de Barreira
 
-			DefineObstaculo (0, 0);
-			DefineObstaculo (0, 1);
-			DefineObstaculo (0, 2);
-			DefineObstaculo (0, 3);
-			DefineObstaculo (0, 4);
-			DefineObstaculo (0, 5);
-			DefineObstaculo (0, 6);
-			DefineObstaculo (0, 7);
-			DefineObstaculo (0, 8);
-			DefineObstaculo (0, 9);
-			DefineObstaculo (0, 10);
-			DefineObstaculo (0, 11);
+			for(int i = 0;i<12;i++){
+				DefineObstaculo(0,i);
+			}
+			// DefineObstaculo (0, 0);
+			// DefineObstaculo (0, 1);
+			// DefineObstaculo (0, 2);
+			// DefineObstaculo (0, 3);
+			// DefineObstaculo (0, 4);
+			// DefineObstaculo (0, 5);
+			// DefineObstaculo (0, 6);
+			// DefineObstaculo (0, 7);
+			// DefineObstaculo (0, 8);
+			// DefineObstaculo (0, 9);
+			// DefineObstaculo (0, 10);
+			// DefineObstaculo (0, 11);
 
 
 
@@ -117,18 +120,21 @@ public class Fase1 : MonoBehaviour {
 
 			//DefineObstaculo (1,1);  // define posicoes de Barreira
 
-			DefineObstaculo (0, 0);
-			DefineObstaculo (0, 1);
-			DefineObstaculo (0, 2);
-			DefineObstaculo (0, 3);
-			DefineObstaculo (0, 4);
-			DefineObstaculo (0, 5);
-			DefineObstaculo (0, 6);
-			DefineObstaculo (0, 7);
-			DefineObstaculo (0, 8);
-			DefineObstaculo (0, 9);
-			DefineObstaculo (0, 10);
-			DefineObstaculo (0, 11);
+			for(int i = 1; i < 12; i++){
+				DefineObstaculo(0,i);
+			}
+			// DefineObstaculo (0, 0);
+			// DefineObstaculo (0, 1);
+			// DefineObstaculo (0, 2);
+			// DefineObstaculo (0, 3);
+			// DefineObstaculo (0, 4);
+			// DefineObstaculo (0, 5);
+			// DefineObstaculo (0, 6);
+			// DefineObstaculo (0, 7);
+			// DefineObstaculo (0, 8);
+			// DefineObstaculo (0, 9);
+			// DefineObstaculo (0, 10);
+			// DefineObstaculo (0, 11);
 
 			NumCenouras = 1;
 			CriaCenoura (4,5);  // define local de Hortaliças
