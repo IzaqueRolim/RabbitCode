@@ -1281,8 +1281,7 @@ public class FaseSimples: MonoBehaviour {
 	void CriaFase(){
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 12; j++) {
-				Matriz [i, j].sprite = Mato;
-			
+				//Matriz [i, j].sprite = Mato;
 			}
 		}
 	}
