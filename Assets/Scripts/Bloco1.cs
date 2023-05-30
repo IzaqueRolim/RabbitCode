@@ -9,7 +9,8 @@ public class Bloco1 : MonoBehaviour, IBeginDragHandler,IDragHandler, IEndDragHan
 
 	Vector3 posicao;
 	public Algoritmo algoritmo;
-	public Sprite x;
+	public FaseSimples faseSimples;
+	public Sprite x,y;
 
 	public static bool Encaixado;
 
@@ -44,12 +45,13 @@ public class Bloco1 : MonoBehaviour, IBeginDragHandler,IDragHandler, IEndDragHan
 
 		if (BlocoLocal.tocando == true) {
 			Encaixado = true;
-			algoritmo.AlgoritmoP [algoritmo.indice].sprite = x;
+			algoritmo.AlgoritmoP [algoritmo.indice].sprite = GetComponent<Image>().sprite;
 			algoritmo.DropLinha [algoritmo.indice].gameObject.SetActive (true);
 			algoritmo.DropColuna [algoritmo.indice].gameObject.SetActive (true);
-			algoritmo.AlgoritmoP[algoritmo.indice].tag = "desativado";
+			//algoritmo.AlgoritmoP[algoritmo.indice].tag = "desativado";
 
 			fase1.contadorBlocos++;
+			fase1.AddDir();
 
 
 			algoritmo.indice++;

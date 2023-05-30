@@ -13,7 +13,6 @@ public class BlocoLocal : MonoBehaviour {
 	public Sprite Padrao;
 
 
-
 	void OnTriggerEnter2D(Collider2D obj){
 
 		if (gameObject.tag == "ativo") {

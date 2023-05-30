@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,7 +36,7 @@ public class FaseSimples: MonoBehaviour {
 	bool play;
 	float velocidade = 100;
 	public static bool vivo;
-	int indiceDestino = 0;
+	public int indiceDestino = 0;
 
 	public Image Cenoura;
 	public GameObject Pai;
@@ -46,6 +46,7 @@ public class FaseSimples: MonoBehaviour {
 	int ColunaPlayer; 
 	int LinhaToca;
 	int ColunaToca; 
+	
 
 	public Animator BombaAnim;
 	public Animator EstrelaAnim;
@@ -59,6 +60,19 @@ public class FaseSimples: MonoBehaviour {
 	public Text TextLinha;
 	public Text TextColuna;
 
+	//##################################### START E UPDATE ############################################
+	void Start () {
+		iniciaMatriz ();
+		CriaFase ();
+		vivo = true;
+		EscolhaFase ();
+		IniciaLinhaColuna ();
+		EstrelasNum = 1;
+	}
+	
+	void Update () {
+		CaminhaEntreOsPontos (indiceDestino-1);
+	}
 	//##################################### CRIAÇÃO DE FASES ############################################
 
 	void EscolhaFase(){
@@ -1152,26 +1166,28 @@ public class FaseSimples: MonoBehaviour {
 
 	void DefineObstaculo(int i, int j){
 		Matriz[i,j].sprite = Buraco;
-		Matriz[i,j].tag = "buraco";
+		//Matriz[i,j].tag = "buraco";
 	}
 		
-	//##############################################################################  criação da Matriz
-
+	//#######################  criação da Matriz
 	public List <Image> ListaIMG;
+	
 	public Image[,] Matriz = new Image[6,12];
+	public Vector2[,] MatrizPos = new Vector2[6,12];
+
+	private Camera cam;
 
 	int ind = 0;
 
 	void iniciaMatriz(){
+		cam = Camera.main;
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 12; j++) {
-
-				Matriz [i, j] = ListaIMG [ind];
+				Matriz [i, j] = ListaIMG [ind];		
+				MatrizPos[i,j] = ListaIMG[ind].rectTransform.TransformPoint(ListaIMG[ind].rectTransform.pivot);		
 				ind++;
-
 			}
 		}
-
 	}
 
 	//##################################################################################################
@@ -1199,34 +1215,23 @@ public class FaseSimples: MonoBehaviour {
 	
 	}
 		
-	public int IndiceAtual;
+	
 
 	public void MudaIndice(int i){
-		IndiceAtual = i;
+		indiceAtual = i;
 	}
 
 	public void  SomaLinha(Dropdown dp){  // parei aqui
-		LinhasMove[IndiceAtual] = dp.value;
+		LinhasMove[indiceAtual] = dp.value;
 	}
 
 	public void  SomaColuna(Dropdown dp){
-		ColunaMove [IndiceAtual] = dp.value;
+		ColunaMove [indiceAtual] = dp.value;
 	}
 
 	//#################################################################################################
 
-	List <GameObject> Destinos = new List<GameObject>();
-
-	void CriaCaminho(){
-		for(int i = 0; i < contadorBlocos; i++){
-
-				Destinos.Add (Matriz [LinhasMove [i], ColunaMove [i]].gameObject);
-				LinhaPlayer = LinhasMove [i];
-				ColunaPlayer = ColunaMove [i];
-
-		}
-	}
-		
+	public List <GameObject> Destinos = new List<GameObject>();
 
 	public void Iniciar(){
 		CriaCaminho ();
@@ -1235,11 +1240,18 @@ public class FaseSimples: MonoBehaviour {
 
 	GameObject Destino;
 
-	void ProximoPasso(){
+	void CriaCaminho(){
+	Destinos.Clear();
+		for(int i = 0; i < contadorBlocos; i++){
+				Destinos.Add (Matriz [LinhasMove [i], ColunaMove [i]].gameObject);
+				LinhaPlayer = LinhasMove [i];
+				ColunaPlayer = ColunaMove [i];
+		}
+	}
 
+	void ProximoPasso(){
 		if (indiceDestino < contadorBlocos) {
 			animPlayer.SetBool ("Andar",true);
-
 			Destino = Destinos [indiceDestino];
 			indiceDestino++;
 			play = true;
@@ -1250,29 +1262,68 @@ public class FaseSimples: MonoBehaviour {
 		Invoke ("InvokeSaiu", 5);
 	}
 
+	public string dir = "COL";
+	public List<string> dirs = new List<string>();
+	public List<Sprite> blocos = new List<Sprite>();
 
+	private float lastClickTime = 0.2f;
+	private float doubleClickDelay = 0.3f;
+	
+	public void ToggleDirecao(Image image){
+		if (Time.time - lastClickTime < doubleClickDelay){
+			dir = (dir=="COL")? "LIN": "COL";
+			image.sprite = (dir=="COL")? blocos[0]: blocos[1];
+		}
 
-	void CaminhaEntreOsPontos(){  // caminha até o proximo destino
+    	lastClickTime = Time.time;
+	}
+	public void AddDir(){
+		dirs.Add(dir);
+	}
+
+	void CaminhaEntreOsPontos(int i){  // caminha até o proximo destino
 		if (play == true && vivo == true) {
 			float Passo = velocidade * Time.deltaTime;
-			Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, Destino.transform.position, Passo);
+			if(dirs[i]=="COL"){
+				if(Jogador.transform.position.x!=Destino.transform.position.x){
+					float direction = Destino.transform.position.x - Jogador.transform.position.x;
+					direction = (direction>0) ? 61 : -61;
+					Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Destino.transform.position.x,Jogador.transform.position.y), Passo);
+				}
+				else{
+					if(Jogador.transform.position.y!=Destino.transform.position.y){
+						Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Jogador.transform.position.x,Destino.transform.position.y), Passo);
+					}
+				}
+			}
+			else if(dirs[i] == "LIN"){
+				if(Jogador.transform.position.y!=Destino.transform.position.y){
+					Debug.Log("Entrei na direcao");
+					Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Jogador.transform.position.x,Destino.transform.position.y), Passo);
+				}
+				else{
+					if(Jogador.transform.position.x!=Destino.transform.position.x){
+						Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Destino.transform.position.x,Jogador.transform.position.y), Passo);
+					}
+				}
+			}
 
 			if (Jogador.transform.position == Toca.transform.position) {
-				play = false;
-				animPlayer.SetBool ("Andar", false);
+					play = false;
+					animPlayer.SetBool ("Andar", false);
 
-				if (Player1.ContCenouras == NumCenouras) {
-					animPlayer.SetBool ("Comemorando", true);
-					Invoke ("InvokeCerto", 2);
-				} else {
-					Invoke ("InvokeNaoColetou", 2);
-				}
+					if (Player1.ContCenouras == NumCenouras) {
+						animPlayer.SetBool ("Comemorando", true);
+						Invoke ("InvokeCerto", 2);
+					} else {
+						Invoke ("InvokeNaoColetou", 2);
+					}
 
-			} else if ((Jogador.transform.position.x == Destino.transform.position.x) && (Jogador.transform.position.y == Destino.transform.position.y)) {
-				animPlayer.SetBool ("Andar", false);
-				play = false;
-				ProximoPasso ();
-			} 
+				} else if ((Jogador.transform.position.x == Destino.transform.position.x) && (Jogador.transform.position.y == Destino.transform.position.y)) {
+					animPlayer.SetBool ("Andar", false);
+					play = false;
+					ProximoPasso ();
+				} 
 		}
 	}
 		
@@ -1285,7 +1336,7 @@ public class FaseSimples: MonoBehaviour {
 			}
 		}
 	}
-
+	public int indiceAtual;
 	void CriaCenoura(int i, int j){
 		Image cenoura = Instantiate (Cenoura);
 		cenoura.transform.position = Matriz [i, j].transform.position;
@@ -1347,17 +1398,5 @@ public class FaseSimples: MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-		iniciaMatriz ();
-		CriaFase ();
-		vivo = true;
-		EscolhaFase ();
-		IniciaLinhaColuna ();
-		EstrelasNum = 1;
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		CaminhaEntreOsPontos ();
-	}
 }
