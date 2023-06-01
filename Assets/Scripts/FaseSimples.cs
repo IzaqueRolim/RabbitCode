@@ -18,6 +18,8 @@ public class FaseSimples: MonoBehaviour {
 	public GameObject PainelErrado;
 	public GameObject PainelFaltaColetar;
 	public GameObject painelSaiu;
+	public GameObject colaBloco;
+
 
 	public static int EstrelasNum;
 
@@ -78,7 +80,7 @@ public class FaseSimples: MonoBehaviour {
 	void EscolhaFase(){
 		switch(PlayerPrefs.GetInt("NF")){
 		case 1:
-
+			colaBloco.SetActive(true);
 			EstrelaAnim.SetBool ("mostraE", true);
 			Estrela2Anim.SetBool ("mostraE", true);
 
@@ -106,7 +108,7 @@ public class FaseSimples: MonoBehaviour {
 			PosicionaToca (LinhaToca, ColunaToca);
 			break;
 		case 2:
-
+			colaBloco.SetActive(false);
 			EstrelaAnim.SetBool ("mostraE", true);
 
 			BombaAnim.SetBool ("visivel", true);
@@ -137,6 +139,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 3:
+			colaBloco.SetActive(false);
 			Bomba2Anim.SetBool ("visivel", true);
 			LinhaPlayer = 3;  // poisiçao player
 			ColunaPlayer = 1; 
@@ -170,7 +173,7 @@ public class FaseSimples: MonoBehaviour {
 			break;
 
 		case 4:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 2;  // poisiçao player
 			ColunaPlayer = 9; 
 
@@ -203,7 +206,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 5:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 5;  // poisiçao player
 			ColunaPlayer = 11; 
 
@@ -263,7 +266,7 @@ public class FaseSimples: MonoBehaviour {
 			break;
 		
 		case 6:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 5;  // poisiçao player
 			ColunaPlayer = 4; 
 
@@ -306,7 +309,7 @@ public class FaseSimples: MonoBehaviour {
 			break;
 
 		case 7:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 0;  // poisiçao player
 			ColunaPlayer = 1; 
 
@@ -364,7 +367,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 8:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 0;  // poisiçao player
 			ColunaPlayer = 9; 
 
@@ -413,7 +416,7 @@ public class FaseSimples: MonoBehaviour {
 			break;
 
 		case 9:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 3;  // poisiçao player
 			ColunaPlayer = 4; 
 
@@ -469,7 +472,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 10:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 5;  // poisiçao player
 			ColunaPlayer = 2; 
 
@@ -535,7 +538,7 @@ public class FaseSimples: MonoBehaviour {
 			break;
 
 		case 11:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 0;  // poisiçao player
 			ColunaPlayer = 0; 
 
@@ -594,7 +597,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 12:
-			
+			colaBloco.SetActive(false);
 			LinhaPlayer = 5;  // poisiçao player
 			ColunaPlayer = 11; 
 
@@ -643,7 +646,7 @@ public class FaseSimples: MonoBehaviour {
 			break;
 
 		case 13:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 1;  // poisiçao player
 			ColunaPlayer = 11; 
 
@@ -703,7 +706,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 14:
-
+			colaBloco.SetActive(false);
 			LinhaPlayer = 3;  // poisiçao player
 			ColunaPlayer = 5; 
 
@@ -763,6 +766,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 15:
+			colaBloco.SetActive(false);
 
 			LinhaPlayer = 2;  // poisiçao player
 			ColunaPlayer = 11; 
@@ -823,6 +827,7 @@ public class FaseSimples: MonoBehaviour {
 			break;
 
 		case 16:
+			colaBloco.SetActive(false);
 
 			LinhaPlayer = 0;  // poisiçao player
 			ColunaPlayer = 0; 
@@ -890,6 +895,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 17:
+			colaBloco.SetActive(false);
 
 			LinhaPlayer = 3;  // poisiçao player
 			ColunaPlayer = 6; 
@@ -954,6 +960,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 18:
+			colaBloco.SetActive(false);
 
 			LinhaPlayer = 5;  // poisiçao player
 			ColunaPlayer =0; 
@@ -1027,6 +1034,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 19:
+			colaBloco.SetActive(false);
 
 			LinhaPlayer = 0;  // poisiçao player
 			ColunaPlayer =2; 
@@ -1090,6 +1098,7 @@ public class FaseSimples: MonoBehaviour {
 
 			break;
 		case 20:
+			colaBloco.SetActive(false);
 
 			LinhaPlayer = 0;  // poisiçao player
 			ColunaPlayer = 1; 
