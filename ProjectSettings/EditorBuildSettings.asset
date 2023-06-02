@@ -5,16 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: d3a1e75c62f496b4ab9a078258ceadbf
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SelecaoFase.unity
     guid: bdd4c2d88a09a244096c9f18df1810bd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Matriz.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MatrizFase1.unity
     guid: f1db7b5f162806c478536b53df3ecd09
+  - enabled: 1
+    path: Assets/GameScenes/Menu.unity
+    guid: a76095b825971ee4dac42f254f586286
+  - enabled: 1
+    path: Assets/GameScenes/SelecaoFase.unity
+    guid: 6c1984137459d38439391fd3d5cdf04e
+  - enabled: 1
+    path: Assets/GameScenes/MatrizFase1.unity
+    guid: 7a1d72ebd85c5ce4a8477b156f73e244
   m_configObjects: {}

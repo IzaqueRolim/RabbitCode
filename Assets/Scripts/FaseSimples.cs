@@ -36,7 +36,7 @@ public class FaseSimples: MonoBehaviour {
 	public Text TextoEstrela2;
 
 	public bool play;
-	float velocidade = 100;
+	float velocidade = 130;
 	public static bool vivo;
 	public int indiceDestino = 0;
 
