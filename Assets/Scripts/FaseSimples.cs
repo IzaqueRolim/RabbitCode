@@ -35,7 +35,7 @@ public class FaseSimples: MonoBehaviour {
 	public Text TextoEstrela1;
 	public Text TextoEstrela2;
 
-	bool play;
+	public bool play;
 	float velocidade = 100;
 	public static bool vivo;
 	public int indiceDestino = 0;
@@ -63,13 +63,17 @@ public class FaseSimples: MonoBehaviour {
 	public Text TextColuna;
 
 	//##################################### START E UPDATE ############################################
-	void Start () {
+	void Awake () {
 		iniciaMatriz ();
 		CriaFase ();
 		vivo = true;
 		EscolhaFase ();
 		IniciaLinhaColuna ();
 		EstrelasNum = 1;
+	}
+
+	public void MudaPlay(){
+		play=false;
 	}
 	
 	void Update () {
