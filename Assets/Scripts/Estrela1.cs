@@ -19,7 +19,7 @@ public class Estrela1 : MonoBehaviour {
 			anim.SetBool ("Estrela",true);
 			FaseSimples.EstrelasNum++;
 			Destroy (ColisorObjeto);
-			Destroy (gameObject, 0.6f);
+			Destroy (gameObject);
 		}
 
 	}

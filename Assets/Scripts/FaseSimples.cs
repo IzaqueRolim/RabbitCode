@@ -1217,7 +1217,6 @@ public class FaseSimples: MonoBehaviour {
 
 
 	void IniciaLinhaColuna(){
-	
 		for (int i = 0; i < 10; i++) {
 			LinhasMove.Add (0);
 		}
@@ -1225,7 +1224,6 @@ public class FaseSimples: MonoBehaviour {
 		for (int i = 0; i < 10; i++) {
 			ColunaMove.Add (0);
 		}
-	
 	}
 		
 	
@@ -1254,9 +1252,14 @@ public class FaseSimples: MonoBehaviour {
 	GameObject Destino;
 
 	void CriaCaminho(){
-	Destinos.Clear();
+		Destinos.Clear();
 		for(int i = 0; i < contadorBlocos; i++){
-				Destinos.Add (Matriz [LinhasMove [i], ColunaMove [i]].gameObject);
+				if(dir == "COL"){
+					Destinos.Add (Matriz [LinhasMove [i], ColunaMove [i]].gameObject);
+				}
+				else{
+					Destinos.Add (Matriz [ColunaMove [i], LinhasMove [i]].gameObject);
+				}
 				LinhaPlayer = LinhasMove [i];
 				ColunaPlayer = ColunaMove [i];
 		}
