@@ -51,9 +51,10 @@ public class Bloco1 : MonoBehaviour, IBeginDragHandler,IDragHandler, IEndDragHan
 			Encaixado = true;
 
 			if(GetComponent<Image>().sprite == sprite){
+				
 				for(int i = 0; i< 12;i++){
 					optionsLinha.Add(i.ToString());
-					if(i<7){
+					if(i<6){
 						optionsColuna.Add(i.ToString());
 					}
 				}
@@ -61,7 +62,7 @@ public class Bloco1 : MonoBehaviour, IBeginDragHandler,IDragHandler, IEndDragHan
 			else{
 				for(int i = 0; i< 12;i++){
 					optionsColuna.Add(i.ToString());
-					if(i<7){
+					if(i<6){
 						optionsLinha.Add(i.ToString());
 					}
 				}

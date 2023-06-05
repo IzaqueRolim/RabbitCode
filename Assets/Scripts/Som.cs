@@ -10,7 +10,7 @@ public class Som : MonoBehaviour
    public void ToggleSom(GameObject obj){
     obj.SetActive(!obj.activeSelf);
 
-    if(obj.activeSelf){
+    if(!obj.activeSelf){
          GetComponent<AudioSource>().Play();
          return;
     }
