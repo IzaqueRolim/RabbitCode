@@ -1182,7 +1182,7 @@ public class FaseSimples: MonoBehaviour {
 		//Matriz[i,j].tag = "buraco";
 	}
 		
-	//#######################  criação da Matriz
+	//======================================  criação da Matriz
 	public List <Image> ListaIMG;
 	
 	public Image[,] Matriz = new Image[6,12];
