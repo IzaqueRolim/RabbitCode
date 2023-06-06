@@ -50,9 +50,9 @@ public class Bloco1 : MonoBehaviour, IBeginDragHandler,IDragHandler, IEndDragHan
 			List<string> optionsColuna = new List<string>();
 			Encaixado = true;
 
-			if(GetComponent<Image>().sprite == sprite){
-				
-				for(int i = 0; i< 12;i++){
+			bool spriteEhVerde = GetComponent<Image>().sprite == sprite;
+			if(spriteEhVerde){
+				for(int i = 0; i< 12;i++){ 
 					optionsLinha.Add(i.ToString());
 					if(i<6){
 						optionsColuna.Add(i.ToString());
@@ -79,7 +79,7 @@ public class Bloco1 : MonoBehaviour, IBeginDragHandler,IDragHandler, IEndDragHan
 			//algoritmo.AlgoritmoP[algoritmo.indice].tag = "desativado";
 
 			fase1.contadorBlocos++;
-			fase1.AddDir();
+			fase1.AddDir(spriteEhVerde?"COL":"LIN");
 
 
 			algoritmo.indice++;

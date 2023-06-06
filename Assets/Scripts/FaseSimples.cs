@@ -1254,7 +1254,7 @@ public class FaseSimples: MonoBehaviour {
 	void CriaCaminho(){
 		Destinos.Clear();
 		for(int i = 0; i < contadorBlocos; i++){
-				if(dir == "COL"){
+				if(dirs[i] == "LIN"){
 					Destinos.Add (Matriz [LinhasMove [i], ColunaMove [i]].gameObject);
 				}
 				else{
@@ -1293,8 +1293,8 @@ public class FaseSimples: MonoBehaviour {
 
     	lastClickTime = Time.time;
 	}
-	public void AddDir(){
-		dirs.Add(dir);
+	public void AddDir(string value){
+		dirs.Add(value);
 	}
 
 	void CaminhaEntreOsPontos(int i){  // caminha até o proximo destino
