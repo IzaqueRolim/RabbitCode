@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player1 : MonoBehaviour {
 
@@ -8,11 +9,13 @@ public class Player1 : MonoBehaviour {
 
 	public FaseSimples fase1;
 	public Animator AnimPlayer;
+	public Text txtCenoura;
 
 	void OnTriggerEnter2D(Collider2D obj){
 		if(obj.tag == "cenoura"){
 			Destroy (obj.gameObject);
 			ContCenouras++;
+			txtCenoura.text = ContCenouras.ToString();
 		}
 
 		if(obj.tag == "buraco"){

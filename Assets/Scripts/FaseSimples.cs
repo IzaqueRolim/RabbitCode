@@ -162,10 +162,10 @@ public class FaseSimples: MonoBehaviour {
 			PosicionaEstrela1 (4, 3);
 			PosicionaEstrela2 (2, 4);
 
-			for(int i = 1; i < 12; i++){
+			for(int i = 0; i < 12; i++){
 				DefineObstaculo(0,i);
 			}
-			for(int i = 1; i < 4; i++){
+			for(int i = 0; i < 4; i++){
 				DefineObstaculo(i,3);
 			}
 
@@ -1286,12 +1286,12 @@ public class FaseSimples: MonoBehaviour {
 	private float doubleClickDelay = 0.3f;
 	
 	public void ToggleDirecao(Image image){
-		if (Time.time - lastClickTime < doubleClickDelay){
-			dir = (dir=="COL")? "LIN": "COL";
-			image.sprite = (dir=="COL")? blocos[0]: blocos[1];
-		}
+		// if (Time.time - lastClickTime < doubleClickDelay){
+		// 	dir = (dir=="COL")? "LIN": "COL";
+		// 	image.sprite = (dir=="COL")? blocos[0]: blocos[1];
+		// }
 
-    	lastClickTime = Time.time;
+    	// lastClickTime = Time.time;
 	}
 	public void AddDir(string value){
 		dirs.Add(value);

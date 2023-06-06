@@ -10,7 +10,12 @@ PrefabInstance:
     - target: {fileID: 5866860498203644949, guid: bdecb7ab50faed94399be455dbe034cb,
         type: 3}
       propertyPath: m_Name
-      value: Cenoura
+      value: Cenoura Variant(1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866860498203644949, guid: bdecb7ab50faed94399be455dbe034cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: cenoura
       objectReference: {fileID: 0}
     - target: {fileID: 7844218712895959372, guid: bdecb7ab50faed94399be455dbe034cb,
         type: 3}
@@ -140,6 +145,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6032653065980712063}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &6446511140758142333
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203520196294508650}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 19.35
 --- !u!95 &502831915
 Animator:
   serializedVersion: 5
