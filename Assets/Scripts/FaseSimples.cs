@@ -1300,7 +1300,7 @@ public class FaseSimples: MonoBehaviour {
 	void CaminhaEntreOsPontos(int i){  // caminha até o proximo destino
 		if (play == true && vivo == true) {
 			float Passo = velocidade * Time.deltaTime;
-			if(dirs[i]=="COL"){
+			if(dirs[i]=="LIN"){
 				if(Jogador.transform.position.x!=Destino.transform.position.x){
 					float direction = Destino.transform.position.x - Jogador.transform.position.x;
 					direction = (direction>0) ? 61 : -61;
