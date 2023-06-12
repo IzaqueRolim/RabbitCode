@@ -13,4 +13,8 @@ public class Reiniciar : MonoBehaviour {
 		SceneManager.LoadScene (cena);
 	}
 
+	public void SetaFezTutorial(){
+	PlayerPrefs.SetInt("fezTutorial",1);
+	}
+
 }

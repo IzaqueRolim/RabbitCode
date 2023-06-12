@@ -1312,7 +1312,7 @@ public class FaseSimples: MonoBehaviour {
 					}
 				}
 			}
-			else if(dirs[i] == "LIN"){
+			else if(dirs[i] == "COL"){
 				if(Jogador.transform.position.y!=Destino.transform.position.y){
 					Debug.Log("Entrei na direcao");
 					Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Jogador.transform.position.x,Destino.transform.position.y), Passo);

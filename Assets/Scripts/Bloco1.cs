@@ -24,7 +24,6 @@ public class Bloco1 : MonoBehaviour, IBeginDragHandler,IDragHandler, IEndDragHan
 	public void OnBeginDrag (PointerEventData eventData)
 	{
 		posicao = gameObject.transform.position;
-
 	}
 	#endregion
 

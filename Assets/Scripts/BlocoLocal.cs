@@ -11,14 +11,18 @@ public class BlocoLocal : MonoBehaviour {
 	public static bool tocando;
 	public Sprite Brilho;
 	public Sprite Padrao;
+	public Sprite blocoAzul;
+	public Sprite blocoVerde;
 
 
 	void OnTriggerEnter2D(Collider2D obj){
 
 		if (gameObject.tag == "ativo") {
-			x = GetComponent<Image> ();
-			x.sprite = Brilho;
-			tocando = true;
+			if(!(x.sprite == blocoAzul || x.sprite == blocoVerde )){
+				x = GetComponent<Image> ();
+				x.sprite = Brilho;
+				tocando = true;			
+			}
 		}
 	}
 
@@ -26,8 +30,10 @@ public class BlocoLocal : MonoBehaviour {
 	void OnTriggerExit2D(){
 		if (gameObject.tag == "ativo") {
 			if (Bloco1.Encaixado == false) {
-				x.sprite = Padrao;
-				tocando = false;
+			if(!(x.sprite == blocoAzul || x.sprite == blocoVerde )){
+					x.sprite = Padrao;
+					tocando = false;
+				}
 			}
 		}
 	}
@@ -38,6 +44,7 @@ public class BlocoLocal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		x = GetComponent<Image> ();
 		tocando = false;
 	}
 }
