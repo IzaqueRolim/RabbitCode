@@ -1307,15 +1307,15 @@ public class FaseSimples: MonoBehaviour {
 					Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Destino.transform.position.x,Jogador.transform.position.y), Passo);
 				}
 				else{
-					if(Jogador.transform.position.y!=Destino.transform.position.y){
-						Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Jogador.transform.position.x,Destino.transform.position.y), Passo);
+					if(Jogador.transform.position.y!=Destino.transform.position.y-14){
+						Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Jogador.transform.position.x,Destino.transform.position.y-14), Passo);
 					}
 				}
 			}
 			else if(dirs[i] == "COL"){
-				if(Jogador.transform.position.y!=Destino.transform.position.y){
+				if(Jogador.transform.position.y!=Destino.transform.position.y-14){
 					Debug.Log("Entrei na direcao");
-					Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Jogador.transform.position.x,Destino.transform.position.y), Passo);
+					Jogador.transform.position = Vector3.MoveTowards (Jogador.transform.position, new Vector2(Jogador.transform.position.x,Destino.transform.position.y-14), Passo);
 				}
 				else{
 					if(Jogador.transform.position.x!=Destino.transform.position.x){

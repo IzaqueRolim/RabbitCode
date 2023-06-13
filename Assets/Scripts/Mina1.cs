@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
+
 
 public class Mina1 : MonoBehaviour {
 
@@ -14,14 +16,16 @@ public class Mina1 : MonoBehaviour {
 	}
 
 
-	void OnTriggerEnter2D(Collider2D obj){
+	async void OnTriggerEnter2D(Collider2D obj){
 		if (obj.tag == "Player") {
+			await Task.Delay(1000);
 			fase1.CarregaInvokeErrdao ();
 			Invoke ("CarregaMorte",2);
 			anim.SetBool ("explode",true);
+
 			AnimPlayer.SetBool ("Morto", true);
 			FaseSimples.vivo = false;
-			Destroy (gameObject, 0.5f);
+			// (gameObject, 0.5f);
 		}
 	
 	}

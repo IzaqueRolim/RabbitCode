@@ -7,7 +7,7 @@ public class TutorialScene : MonoBehaviour
 {
     void Start()
     {
-    PlayerPrefs.SetInt("fezTutorial",0);
+//PlayerPrefs.SetInt("fezTutorial",0);
     //PlayerPrefs.SetInt("NF",0);
         bool fezTutorial = PlayerPrefs.GetInt("fezTutorial") == 1 ? true: false;
     
