@@ -18,8 +18,9 @@ public class Mina1 : MonoBehaviour {
 
 	async void OnTriggerEnter2D(Collider2D obj){
 		if (obj.tag == "Player") {
-			await Task.Delay(1000);
+			await Task.Delay(100);
 			fase1.CarregaInvokeErrdao ();
+			
 			Invoke ("CarregaMorte",2);
 			anim.SetBool ("explode",true);
 

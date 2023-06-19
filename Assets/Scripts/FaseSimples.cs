@@ -1360,6 +1360,7 @@ public class FaseSimples: MonoBehaviour {
 	}
 		
 	public void CarregaInvokeErrdao(){
+		this.Jogador.transform.Translate(new Vector2(0,-10f));
 		Invoke ("InvokeErrado", 2);
 	}
 		
