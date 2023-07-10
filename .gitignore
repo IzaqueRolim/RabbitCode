@@ -70,3 +70,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+*.dll
+BuildRabbitCode/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser
+BuildRabbitCode/MonoBleedingEdge/etc/mono/2.0/machine.config
+BuildRabbitCode/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser
+*.map
