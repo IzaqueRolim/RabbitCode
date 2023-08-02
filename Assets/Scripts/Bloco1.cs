@@ -12,8 +12,6 @@ public class Bloco1 : MonoBehaviour, IBeginDragHandler,IDragHandler, IEndDragHan
 	public FaseSimples faseSimples;
 	public Sprite sprite;
 
-	
-
 	public static bool Encaixado;
 
 	public FaseSimples fase1;
