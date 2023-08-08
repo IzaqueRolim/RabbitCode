@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; }
     public int index = 0;
 
-    List<Destino> Destinos;
+    List<Destino> Destinos = new List<Destino>();
 
     private void Start()
     {
@@ -56,55 +56,61 @@ public class PlayerController : MonoBehaviour
     }
     public void IrAoDestino()
     {
-        if (direcao == "COL")
+        if (Destinos.Count == 0)
         {
-            if (Destinos[index].destino.y != transform.position.y)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].destino.y), velocidade * Time.deltaTime);
-            }
-            else if (Destinos[index].destino.x != transform.position.x)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].destino.x, transform.position.y, 0), velocidade * Time.deltaTime);
-            }
-            else
-            {
-                if(index == Destinos.Count-1){
-                    podeAndar = false;
-                    Destinos.Clear();
-                    index = 0;
-                    return;
-                }
-                index++;
-            }
+            return;
         }
-        else if (direcao == "LIN")
-        {
-            if (Destinos[index].destino.x != transform.position.x)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].destino.x, transform.position.y, 0), velocidade * Time.deltaTime);
-            }
-            else if (Destinos[index].destino.y != transform.position.y)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].destino.y), velocidade * Time.deltaTime);
-            }
-            else
-            {
-                if(index == Destinos.Count-1){
-                    podeAndar = false;
-                    Destinos.Clear();
-                    index = 0;
-                    return;
-                }
-                index++;
-            }
-        }
-        
 
+        Destino destinoAtual = Destinos[index];
+
+        Vector3 novaPosicao = Vector3.zero;
+
+        if (destinoAtual.direcao == "COL")
+        {
+            if (Mathf.Abs(destinoAtual.destino.y - transform.position.y) > 0.01f)
+            {
+                novaPosicao = new Vector3(transform.position.x, destinoAtual.destino.y, transform.position.z);
+            }
+            else if (Mathf.Abs(destinoAtual.destino.x - transform.position.x) > 0.01f)
+            {
+                novaPosicao = new Vector3(destinoAtual.destino.x, transform.position.y, transform.position.z);
+            }
+        }
+        else if (destinoAtual.direcao == "LIN")
+        {
+            if (Mathf.Abs(destinoAtual.destino.x - transform.position.x) > 0.01f)
+            {
+                novaPosicao = new Vector3(destinoAtual.destino.x, transform.position.y, transform.position.z);
+            }
+            else if (Mathf.Abs(destinoAtual.destino.y - transform.position.y) > 0.01f)
+            {
+                novaPosicao = new Vector3(transform.position.x, destinoAtual.destino.y, transform.position.z);
+            }
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, novaPosicao, velocidade * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, novaPosicao) < 0.01f)
+        {
+            index++;
+
+            if (index >= Destinos.Count)
+            {
+                FinalizarMovimento();
+            }
+        }
     }
 
+    private void FinalizarMovimento()
+    {
+        podeAndar = false;
+        Destinos.Clear();
+        index = 0;
+    }
+
+
     public void SetarDestino(List<string> direcao, List<int> X,List<int> Y)
-    { 
-        //Destinos = new List<Vector3>(){(X,Y);
+    {
        
         for(int i = 0;i < X.Count;i++)
         {

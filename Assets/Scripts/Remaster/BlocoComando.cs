@@ -5,6 +5,8 @@ using System.Drawing;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
+
 
 
 public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -19,8 +21,8 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public Sprite spriteBordaBlocoVisivel;
     public Sprite spriteBordaBlocoInvisivel;
 
-    Dropdown dropdownLinha;
-    Dropdown dropdownColuna;
+    TMP_Dropdown dropdownLinha;
+    TMP_Dropdown dropdownColuna;
 
     List<string> linhas = new List<string>();
     List<string> colunas = new List<string>();
@@ -29,7 +31,7 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     GameObject blocoLocalCodigo = null;
     GameObject paiBlocoLocalCodigo;
 
-    int index = 2;
+    int index = 1;
 
     void Start()
     {
@@ -90,8 +92,8 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         // 3)SETO OS VALORES DO DROPDOWN DE LINHA E COLUNA DE ACORDO COM O SPRITE(SE FOR VERDE OU AZUL) {VALORES = [0,1,2,3,4,5] e [0,1,2,3,4,5,6,7,8,9,10,11]
 
         // Obtenha os Dropdowns que sao filhas do blocolocalcodigo.
-        dropdownLinha = blocoLocalCodigo.transform.GetChild(0).gameObject.GetComponent<Dropdown>();
-        dropdownColuna = blocoLocalCodigo.transform.GetChild(1).gameObject.GetComponent<Dropdown>();
+        dropdownLinha = blocoLocalCodigo.transform.GetChild(0).gameObject.GetComponent<TMP_Dropdown>();
+        dropdownColuna = blocoLocalCodigo.transform.GetChild(1).gameObject.GetComponent<TMP_Dropdown>();
 
         // Ative os DropDown de linha e coluna.
         dropdownLinha.gameObject.SetActive(true);
@@ -138,7 +140,7 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         // Conte o número de objetos ativos no pai
         int qtdObjetosAtivos = CountActiveGameObjects(paiBlocoLocalCodigo.transform);
-        bool chegouNaQuantidadeMaximaDeBlocos = paiBlocoLocalCodigo.transform.childCount == qtdObjetosAtivos + 1;
+        bool chegouNaQuantidadeMaximaDeBlocos = paiBlocoLocalCodigo.transform.childCount == qtdObjetosAtivos -2;
         int indexDoProximoBloco = chegouNaQuantidadeMaximaDeBlocos ? qtdObjetosAtivos : qtdObjetosAtivos + 1;
 
         // Obtem e ativa o proximo bloco que está invisivel.

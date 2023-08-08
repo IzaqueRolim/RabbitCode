@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class BlocoSingleton : MonoBehaviour
@@ -29,15 +30,19 @@ public class BlocoSingleton : MonoBehaviour
     {
         int qtdValoresJogados = CountActiveGameObjects(this.transform);
 
+        // Limpo as listas pois os valores repetem se nao limpar
         Linha.Clear();
         Coluna.Clear();
-        //  Começa em 2 porque eu quero ignorar 2 primeiros objetos dentro do GameObject "Panel - LocalCodigo"
-        for (int i = 2; i <= qtdValoresJogados; i++)
-        {
-            Dropdown linha  = this.transform.GetChild(i).GetChild(0).GetComponent<Dropdown>();
-            Dropdown coluna = this.transform.GetChild(i).GetChild(1).GetComponent<Dropdown>();
-            Direcao[i] = this.transform.GetChild(i).GetComponent<Image>().sprite == spriteBlocoVerde? "":"";
+        Direcao.Clear();
 
+        //  Começa em 2 porque eu quero ignorar 2 primeiros objetos dentro do GameObject "Panel - LocalCodigo"
+        for (int i = 1; i <= qtdValoresJogados; i++)
+        {
+            TMP_Dropdown linha  = this.transform.GetChild(i).GetChild(0).GetComponent<TMP_Dropdown>();
+            TMP_Dropdown coluna = this.transform.GetChild(i).GetChild(1).GetComponent<TMP_Dropdown>();
+            string direcao = this.transform.GetChild(i).GetComponent<Image>().sprite == spriteBlocoVerde? "COL":"LIN";
+
+            Direcao.Add(direcao);
             Linha.Add(linha.value);
             Coluna.Add(coluna.value);
         }
@@ -60,14 +65,6 @@ public class BlocoSingleton : MonoBehaviour
         return count;
     }
 
-    private void DefinirLinha(Dropdown dropdown)
-    {
-        Linha.Add(dropdown.value);
-    }
-    private void DefinirColuna(Dropdown dropdown)
-    {
-        Coluna.Add(dropdown.value);
-    }
 
 }
 
