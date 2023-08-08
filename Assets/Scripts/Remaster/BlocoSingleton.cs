@@ -10,16 +10,18 @@ public class BlocoSingleton : MonoBehaviour
    
     public List<int> Linha;
     public List<int> Coluna;
+    public List<string> Direcao;
 
     PlayerController playerController = PlayerController.Instance;
 
+    public Sprite spriteBlocoVerde;
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {   
             GetValoresDropdown();
-            PlayerController.Instance.SetarDestino(Linha, Coluna);
+            PlayerController.Instance.SetarDestino(Direcao,Linha, Coluna);
         }
     }
 
@@ -34,6 +36,7 @@ public class BlocoSingleton : MonoBehaviour
         {
             Dropdown linha  = this.transform.GetChild(i).GetChild(0).GetComponent<Dropdown>();
             Dropdown coluna = this.transform.GetChild(i).GetChild(1).GetComponent<Dropdown>();
+            Direcao[i] = this.transform.GetChild(i).GetComponent<Image>().sprite == spriteBlocoVerde? "":"";
 
             Linha.Add(linha.value);
             Coluna.Add(coluna.value);

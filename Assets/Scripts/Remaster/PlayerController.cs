@@ -7,6 +7,16 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
+
+    [System.Serializable]
+    public class Destino
+    {
+        public string direcao;
+        public Vector3 destino;
+    }
+
+
+
     public string direcao = "COL";
 
     readonly float velocidade = 3f;
@@ -14,11 +24,11 @@ public class PlayerController : MonoBehaviour
 
     bool estaNoDestino = false;
     public bool podeAndar = false;
-
-    public List<Vector3> Destinos = new List<Vector3>();
     
     public static PlayerController Instance { get; private set; }
-    int index = 0;
+    public int index = 0;
+
+    List<Destino> Destinos;
 
     private void Start()
     {
@@ -48,40 +58,57 @@ public class PlayerController : MonoBehaviour
     {
         if (direcao == "COL")
         {
-            if (Destinos[index].y != transform.position.y)
+            if (Destinos[index].destino.y != transform.position.y)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].y), velocidade * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].destino.y), velocidade * Time.deltaTime);
             }
-            else if (Destinos[index].x != transform.position.x)
+            else if (Destinos[index].destino.x != transform.position.x)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].x, transform.position.y, 0), velocidade * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].destino.x, transform.position.y, 0), velocidade * Time.deltaTime);
+            }
+            else
+            {
+                if(index == Destinos.Count-1){
+                    podeAndar = false;
+                    Destinos.Clear();
+                    index = 0;
+                    return;
+                }
+                index++;
             }
         }
         else if (direcao == "LIN")
         {
-            if (Destinos[index].x != transform.position.x)
+            if (Destinos[index].destino.x != transform.position.x)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].x, transform.position.y, 0), velocidade * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].destino.x, transform.position.y, 0), velocidade * Time.deltaTime);
             }
-            else if (Destinos[index].y != transform.position.y)
+            else if (Destinos[index].destino.y != transform.position.y)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].y), velocidade * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].destino.y), velocidade * Time.deltaTime);
+            }
+            else
+            {
+                if(index == Destinos.Count-1){
+                    podeAndar = false;
+                    Destinos.Clear();
+                    index = 0;
+                    return;
+                }
+                index++;
             }
         }
-        else
-        {
-            index++;
-        }
+        
 
     }
 
-    public void SetarDestino(List<int> X,List<int> Y)
+    public void SetarDestino(List<string> direcao, List<int> X,List<int> Y)
     { 
         //Destinos = new List<Vector3>(){(X,Y);
        
         for(int i = 0;i < X.Count;i++)
         {
-            Destinos.Add(new Vector3(X[i], Y[i]));
+            Destinos.Add(new Destino{direcao = direcao[i], destino = new Vector3(X[i], Y[i])} );
         }
         podeAndar = true;
     }
