@@ -5,25 +5,56 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class BlocoSingleton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class BlocoSingleton : MonoBehaviour
 {
-    public static BlocoSingleton Instance { get; private set; }
-
+   
     public List<int> Linha;
     public List<int> Coluna;
 
-    private void Awake()
+    PlayerController playerController = PlayerController.Instance;
+
+
+    private void Update()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
+        if(Input.GetKeyDown(KeyCode.Space))
+        {   
+            GetValoresDropdown();
+            PlayerController.Instance.SetarDestino(Linha, Coluna);
         }
-        else
+    }
+
+    private void GetValoresDropdown()
+    {
+        int qtdValoresJogados = CountActiveGameObjects(this.transform);
+
+        Linha.Clear();
+        Coluna.Clear();
+        //  Começa em 2 porque eu quero ignorar 2 primeiros objetos dentro do GameObject "Panel - LocalCodigo"
+        for (int i = 2; i <= qtdValoresJogados; i++)
         {
-            Instance = this;
+            Dropdown linha  = this.transform.GetChild(i).GetChild(0).GetComponent<Dropdown>();
+            Dropdown coluna = this.transform.GetChild(i).GetChild(1).GetComponent<Dropdown>();
+
+            Linha.Add(linha.value);
+            Coluna.Add(coluna.value);
+        }
+    }
+
+
+    // Essa função retorna a quantidade de gameObjects ativos dentro de um transform pai.
+    int CountActiveGameObjects(Transform parent)
+    {
+        int count = 0;
+
+        foreach (Transform child in parent)
+        {
+            if (child.gameObject.activeSelf && child.GetComponent<Image>().color.a == 1f)
+            {
+                count++;
+            }
         }
 
-        DontDestroyOnLoad(gameObject);
+        return count;
     }
 
     private void DefinirLinha(Dropdown dropdown)
@@ -34,29 +65,6 @@ public class BlocoSingleton : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         Coluna.Add(dropdown.value);
     }
-
-    #region IBeginDragHandler implementation
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        throw new NotImplementedException();
-    }
-    #endregion
-
-    #region IDragHandler implementation
-    public void OnDrag(PointerEventData eventData)
-    {
-        this.transform.position = eventData.position;
-        throw new NotImplementedException();
-    }
-    #endregion
-
-    #region IEndDragHandler implementation
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        throw new NotImplementedException();
-    }
-    #endregion
-
 
 }
 

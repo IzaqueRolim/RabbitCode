@@ -13,6 +13,7 @@ TagManager:
   - cenoura
   - buraco
   - mina
+  - blocoLocalCodigo
   layers:
   - Default
   - TransparentFX
