@@ -31,7 +31,7 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     GameObject blocoLocalCodigo = null;
     GameObject paiBlocoLocalCodigo;
 
-    int index = 1;
+    int index = 0;
 
     void Start()
     {
@@ -140,8 +140,8 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         // Conte o número de objetos ativos no pai
         int qtdObjetosAtivos = CountActiveGameObjects(paiBlocoLocalCodigo.transform);
-        bool chegouNaQuantidadeMaximaDeBlocos = paiBlocoLocalCodigo.transform.childCount == qtdObjetosAtivos -2;
-        int indexDoProximoBloco = chegouNaQuantidadeMaximaDeBlocos ? qtdObjetosAtivos : qtdObjetosAtivos + 1;
+        bool chegouNaQuantidadeMaximaDeBlocos = paiBlocoLocalCodigo.transform.childCount == qtdObjetosAtivos;
+        int indexDoProximoBloco = chegouNaQuantidadeMaximaDeBlocos ? qtdObjetosAtivos-1 : qtdObjetosAtivos;
 
         // Obtem e ativa o proximo bloco que está invisivel.
         blocoLocalCodigo = paiBlocoLocalCodigo.transform.GetChild(indexDoProximoBloco).gameObject;

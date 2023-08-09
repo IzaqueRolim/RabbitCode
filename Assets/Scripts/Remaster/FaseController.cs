@@ -29,4 +29,12 @@ public class faseController : MonoBehaviour
                 break;
         }
     }
+
+    void DefinirObstaculo()
+    {
+
+    }
+    void DefinirToca() { }
+    void DefinirArmadilha() { }
+
 }
