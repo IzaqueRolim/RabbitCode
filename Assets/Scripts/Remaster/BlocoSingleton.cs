@@ -39,13 +39,31 @@ public class BlocoSingleton : MonoBehaviour
         //  Começa em 2 porque eu quero ignorar  o 1 primeiro objeto dentro do GameObject "Panel - LocalCodigo"
         for (int i = 1; i < qtdValoresJogados; i++)
         {
-            TMP_Dropdown linha  = this.transform.GetChild(i).GetChild(0).GetComponent<TMP_Dropdown>();
-            TMP_Dropdown coluna = this.transform.GetChild(i).GetChild(1).GetComponent<TMP_Dropdown>();
-            string direcao = this.transform.GetChild(i).GetComponent<Image>().sprite == spriteBlocoVerde? "COL":"LIN";
+            // Faço a verificação do sprite pra diferenciar qual o bloco de linha e coluna para nao setar errado.
+            TMP_Dropdown linha;
+            TMP_Dropdown coluna;
+            string direcao;
+
+            Transform childTransform = this.transform.GetChild(i);
+            Image childImage = childTransform.GetComponent<Image>();
+
+            if (childImage.sprite == spriteBlocoVerde)
+            {
+                linha = childTransform.GetChild(0).GetComponent<TMP_Dropdown>();
+                coluna = childTransform.GetChild(1).GetComponent<TMP_Dropdown>();
+                direcao = "COL";
+            }
+            else
+            {
+                linha = childTransform.GetChild(1).GetComponent<TMP_Dropdown>();
+                coluna = childTransform.GetChild(0).GetComponent<TMP_Dropdown>();
+                direcao = "LIN";
+            }
 
             Direcao.Add(direcao);
             Linha.Add(linha.value);
             Coluna.Add(coluna.value);
+
         }
     }
 
