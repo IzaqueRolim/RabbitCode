@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
         public Vector3 destino;
     }
 
-
     int index = 0;
     int qtdCenouras = 0;
     int qtdEstrelas = 0;
@@ -29,6 +28,8 @@ public class PlayerController : MonoBehaviour
     List<Destino> Destinos = new List<Destino>();
     
     public Image barraEnergia;
+    public Image panelPerdeu;
+    public Image panelGanhou;
     public TextMeshProUGUI txtCenouras;
     public TextMeshProUGUI txtEstrelas;
 
@@ -64,7 +65,9 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Desmaia();
+                // O jimmy desmaia por falta de energia.
+                string mensagemPerdeu = "Suas energias acabaram!Faça um caminho mais curto da proxima vez1";
+                Desmaia(mensagemPerdeu);
             }
         }
     }
@@ -130,19 +133,31 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < X.Count; i++)
         {
             Destinos.Add(new Destino { direcao = direcao[i], destino = new Vector3(X[i], Y[i]) });
+
+            // Se alguma posicao desse array for a do Jimmy, ele inicia nela.
+            // Resolve o erro dele sempre voltar pra primeira posicao.
+            if(transform.position == new Vector3(X[i], Y[i]))
+            {
+                index = i;
+            }
         }
         podeAndar = true;
+        
     }
 
-    public void Desmaia()
+    public void Desmaia(string mensagem)
     {
         podeAndar = false;
-        // animacao para andar
+        panelPerdeu.gameObject.SetActive(true);
+        int qtdFilhosPanel = panelPerdeu.transform.GetChild(0).childCount;
+        Debug.Log(qtdFilhosPanel.ToString()+"OLa");
+        panelPerdeu.transform.GetChild(0).GetChild(qtdFilhosPanel-1).GetComponent<TextMeshProUGUI>().text = mensagem;
+        // animacao para desmaiar
     }
 
     public void Ganhou()
     {
-
+        panelGanhou.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -159,14 +174,19 @@ public class PlayerController : MonoBehaviour
         {
             qtdEstrelas++;
             txtEstrelas.text = "Estrelas: " + qtdEstrelas.ToString();
+
+            Destroy(collision.gameObject);
+            //Animacao da estrela sumindo.
         }
         if (collision.gameObject.tag == "armadilha")
         {
-            //Desmaia();
+            string mensagemPerdeu = "Você foi capturado!Cuidado com as armadilhas";
+            Desmaia(mensagemPerdeu);
         }
         if (collision.gameObject.tag == "obstaculo")
         {
-
+            string mensagemPerdeu = "Cuidado com as caixas";
+            Desmaia(mensagemPerdeu);
         }
         if (collision.gameObject.tag == "toca")
         {

@@ -15,9 +15,11 @@ public class faseController : MonoBehaviour
         MontarFase(1);
     }
 
-    void MontarFase(int numeroFase)
+    void MontarFase(int numeroDaFase)
     {
-        switch (numeroFase)
+        //int numeroDaFase = PlayerPrefs.GetInt("FaseSelecionada");
+
+        switch (numeroDaFase)
         {
             case 1:
 
@@ -53,9 +55,22 @@ public class faseController : MonoBehaviour
                 DefinirToca(11, 5);
 
                 break;
-            case2:
-                break;
+          
 
+            case 2:
+
+               
+                // Monta a Fase 2
+                break;
+            case 3:
+                // Monta a Fase 3
+                break; 
+            case 4:
+                // Monta a Fase 4
+                break;
+            case 5:
+                // Monta a Fase 5
+                break;
             default:
                 break;
         }

@@ -51,7 +51,7 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     #region IBeginDragHandler implementation
     public void OnBeginDrag(PointerEventData eventData)
     {
-        throw new NotImplementedException();
+        this.transform.position = eventData.position;
     }
     #endregion
 
@@ -179,11 +179,7 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             estaTocando = true;
             posicaoDestino = collision.transform.position;
-
-            if (blocoLocalCodigo == null)
-            {
-                blocoLocalCodigo = collision.gameObject;
-            }
+            blocoLocalCodigo = collision.gameObject;
             UnityEngine.Color corVisivel = blocoLocalCodigo.GetComponent<Image>().color;
             corVisivel.a = 1f;
             blocoLocalCodigo.GetComponent<Image>().color = corVisivel;

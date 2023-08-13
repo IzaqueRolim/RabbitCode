@@ -16,8 +16,8 @@ public class SelecaoFase : MonoBehaviour {
 
 
 	public void selecionaFase(int x){
-		PlayerPrefs.SetInt ("NF",x);
-		SceneManager.LoadScene ("MatrizFase1");
+		PlayerPrefs.SetInt ("FaseSelecionada",x);
+		SceneManager.LoadScene ("Gameplay");
 	}
 		
 	void VerificaBotoes(){
