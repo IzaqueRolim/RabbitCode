@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         DefinirPosicaoInicialPlayer(0,3);
     }
 
-    void DefinirPosicaoInicialPlayer(int posX, int posY)
+    public void DefinirPosicaoInicialPlayer(int posX, int posY)
     {
         this.transform.position = new Vector3(posX, posY, 0);
     }

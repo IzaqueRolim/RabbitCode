@@ -10,9 +10,12 @@ public class faseController : MonoBehaviour
     public GameObject prefabCenoura;
     public GameObject prefabEstrela;
 
+    
+
     void Start()
     {
         MontarFase(1);
+        PlayerController.Instance.DefinirPosicaoInicialPlayer(0, 3);
     }
 
     void MontarFase(int numeroDaFase)
