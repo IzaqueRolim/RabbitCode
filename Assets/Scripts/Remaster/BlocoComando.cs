@@ -163,7 +163,6 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 count++;
             }
         }
-
         return count;
     }
 

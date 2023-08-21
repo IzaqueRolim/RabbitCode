@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Image panelGanhou;
     public TextMeshProUGUI txtCenouras;
     public TextMeshProUGUI txtEstrelas;
+    public TextMeshProUGUI txtVida;
 
     public static PlayerController Instance { get; private set; }
 
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         DefinirPosicaoInicialPlayer(0,3);
+        txtVida.text = ((int)energia).ToString();
+       // PlayerPrefs.DeleteAll();
     }
 
     public void DefinirPosicaoInicialPlayer(int posX, int posY)
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
     public void IrAoDestino()
     {
+        txtVida.text = ((int)energia).ToString();
         if (Destinos[index].direcao == "COL")
         {
             if (Destinos[index].destino.y != transform.position.y)
@@ -149,7 +153,9 @@ public class PlayerController : MonoBehaviour
     {
         podeAndar = false;
         panelPerdeu.gameObject.SetActive(true);
+
         int qtdFilhosPanel = panelPerdeu.transform.GetChild(0).childCount;
+
         Debug.Log(qtdFilhosPanel.ToString()+"OLa");
         panelPerdeu.transform.GetChild(0).GetChild(qtdFilhosPanel-1).GetComponent<TextMeshProUGUI>().text = mensagem;
         // animacao para desmaiar
@@ -157,6 +163,14 @@ public class PlayerController : MonoBehaviour
 
     public void Ganhou()
     {
+        // Seta a quantidade de estrelas da fase para vizualicação na tela inicial.
+        int FaseSelecionada = PlayerPrefs.GetInt("FaseSelecionada");
+        PlayerPrefs.SetInt("QuantidadeDeEstrelaDaFase"+FaseSelecionada.ToString(),qtdEstrelas);
+
+        // Seta que a fase foi concluida
+        PlayerPrefs.SetInt("Fase" + FaseSelecionada, 1);
+
+        // Abre o painel com a mensagem de vitoria.
         panelGanhou.gameObject.SetActive(true);
     }
 
@@ -166,7 +180,8 @@ public class PlayerController : MonoBehaviour
         {
             qtdCenouras++;
             txtCenouras.text = "Cenouras: " + qtdCenouras.ToString();
-
+            energia++;
+             
             Destroy(collision.gameObject);
             //Animacao do coelho guardando ou comendo a cenoura.
         }

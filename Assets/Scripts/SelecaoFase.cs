@@ -14,8 +14,12 @@ public class SelecaoFase : MonoBehaviour {
 	public Sprite DuasEstrela;
 	public Sprite TresEstrela;
 
+    void Start()
+    {
+        VerificaBotoes();
+    }
 
-	public void selecionaFase(int x){
+    public void selecionaFase(int x){
 		PlayerPrefs.SetInt ("FaseSelecionada",x);
 		SceneManager.LoadScene ("Gameplay");
 	}
@@ -24,36 +28,23 @@ public class SelecaoFase : MonoBehaviour {
 		Botao [0].interactable = true;
 
 		for(int i = 1; i < 20; i ++){
-			if (PlayerPrefs.GetInt ("B" + i.ToString ()) == 0) {
+			if (PlayerPrefs.GetInt ("Fase" + i.ToString ()) == 0) { // Caso o dado guardado na memoria seja igual a 0, quer dizer que ela não foi concluida
 				Botao [i].interactable = false;
 			} else {
 				Botao [i].interactable = true;
 			}
 		}
 		for (int i = 0; i < 20; i++) {
-			if (PlayerPrefs.GetInt ("E" + i.ToString ()) == 1) {
+			if (PlayerPrefs.GetInt ("QuantidadeDeEstrelaDaFase" + i.ToString ()) == 1) {
 				Estrelas [i].sprite = UmaEstrela;
-			} else if (PlayerPrefs.GetInt ("E" + i.ToString ()) == 2) {
+			} else if (PlayerPrefs.GetInt ("QuantidadeDeEstrelaDaFase" + i.ToString ()) == 2) {
 				Estrelas [i].sprite = DuasEstrela;
-			} else if (PlayerPrefs.GetInt ("E" + i.ToString ()) == 3) {
+			} else if (PlayerPrefs.GetInt ("QuantidadeDeEstrelaDaFase" + i.ToString ()) == 3) {
 				Estrelas [i].sprite = TresEstrela;
 			}
 		}
 
 	}
 
-
-
-
-
-
-	// Use this for initialization
-	void Start () {
-		VerificaBotoes ();
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

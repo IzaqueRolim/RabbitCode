@@ -20,10 +20,15 @@ public class BlocoSingleton : MonoBehaviour
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
-        {   
+        {
             GetValoresDropdown();
-            PlayerController.Instance.SetarDestino(Direcao,Linha, Coluna);
+            PlayerController.Instance.SetarDestino(Direcao, Linha, Coluna);
         }
+    }
+
+    public void SetarDestinoPlayer()
+    {
+       
     }
 
     private void GetValoresDropdown()

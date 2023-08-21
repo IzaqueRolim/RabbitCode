@@ -14,7 +14,7 @@ public class faseController : MonoBehaviour
 
     void Start()
     {
-        MontarFase(1);
+        MontarFase(4);
         PlayerController.Instance.DefinirPosicaoInicialPlayer(0, 3);
     }
 
@@ -69,6 +69,22 @@ public class faseController : MonoBehaviour
                 // Monta a Fase 3
                 break; 
             case 4:
+                DefinirArmadilha(0, 4);
+                DefinirArmadilha(4, 5);
+                DefinirArmadilha(2, 3);
+                DefinirArmadilha(9, 5);
+                DefinirArmadilha(11, 3);
+                DefinirArmadilha(6, 3);
+
+                DefinirCenoura(2, 5);
+                DefinirCenoura(7, 5);
+                DefinirCenoura(11, 4);
+
+                DefinirEstrela(4, 3);
+                DefinirEstrela(8, 3);
+                DefinirEstrela(2, 4);
+
+                DefinirToca(0, 5);
                 // Monta a Fase 4
                 break;
             case 5:
