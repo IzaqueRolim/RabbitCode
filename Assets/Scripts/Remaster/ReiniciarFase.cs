@@ -11,4 +11,9 @@ public class ReiniciarFase : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void ProximaFase()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

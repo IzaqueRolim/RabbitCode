@@ -28,7 +28,8 @@ public class BlocoSingleton : MonoBehaviour
 
     public void SetarDestinoPlayer()
     {
-       
+        GetValoresDropdown();
+        PlayerController.Instance.SetarDestino(Direcao, Linha, Coluna);
     }
 
     private void GetValoresDropdown()

@@ -4492,7 +4492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &358240406
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8640,7 +8640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &621882724
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9928,7 +9928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &728333822
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12069,7 +12069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &955201654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12087,7 +12087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 164.2804, y: 255}
+  m_AnchoredPosition: {x: 164.2804, y: 225.4}
   m_SizeDelta: {x: 268.5609, y: 43.183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &955201655
@@ -12119,8 +12119,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279784878
+  m_fontColor: {r: 0.68235296, g: 0.33333334, b: 0.09411765, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12903,7 +12903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1021264028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12921,7 +12921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 164.2804, y: 315.4085}
+  m_AnchoredPosition: {x: 164.2804, y: 275.2}
   m_SizeDelta: {x: 268.5609, y: 43.183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1021264029
@@ -12953,8 +12953,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4279784878
+  m_fontColor: {r: 0.68235296, g: 0.33333334, b: 0.09411765, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15235,7 +15235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1165437610
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15532,7 +15532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1192190425
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17015,6 +17015,7 @@ GameObject:
   - component: {fileID: 1275998540}
   - component: {fileID: 1275998539}
   - component: {fileID: 1275998538}
+  - component: {fileID: 1275998541}
   m_Layer: 5
   m_Name: Button - Proximo
   m_TagString: Untagged
@@ -17086,9 +17087,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1275998536}
         m_TargetAssemblyTypeName: 
-        m_MethodName: ProximaFase
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17136,6 +17137,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275998536}
   m_CullTransparentMesh: 0
+--- !u!114 &1275998541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275998536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b314b7518ace2e04cb4b39240e8df729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1282298242
 GameObject:
   m_ObjectHideFlags: 0
@@ -17920,7 +17933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1319232418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19304,7 +19317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1411849564
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19459,6 +19472,7 @@ GameObject:
   - component: {fileID: 1428717207}
   - component: {fileID: 1428717206}
   - component: {fileID: 1428717205}
+  - component: {fileID: 1428717208}
   m_Layer: 5
   m_Name: Button - DeNovo
   m_TagString: Untagged
@@ -19530,9 +19544,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: reiniciarFase
+      - m_Target: {fileID: 1428717208}
+        m_TargetAssemblyTypeName: ReiniciarFase, Assembly-CSharp
+        m_MethodName: Reiniciar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19580,6 +19594,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428717203}
   m_CullTransparentMesh: 0
+--- !u!114 &1428717208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428717203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b314b7518ace2e04cb4b39240e8df729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1433119476
 GameObject:
   m_ObjectHideFlags: 0
@@ -19808,7 +19834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1456815248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20903,7 +20929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1520258266
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23248,14 +23274,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1165437610}
-  - {fileID: 621882724}
-  - {fileID: 358240406}
-  - {fileID: 1411849564}
-  - {fileID: 728333822}
-  - {fileID: 1520258266}
-  - {fileID: 1319232418}
-  - {fileID: 1456815248}
   - {fileID: 583847981}
   - {fileID: 930183344}
   - {fileID: 2027680109}
@@ -23264,6 +23282,14 @@ RectTransform:
   - {fileID: 1959121060}
   - {fileID: 563115808}
   - {fileID: 1547516993}
+  - {fileID: 1165437610}
+  - {fileID: 621882724}
+  - {fileID: 358240406}
+  - {fileID: 1411849564}
+  - {fileID: 728333822}
+  - {fileID: 1520258266}
+  - {fileID: 1319232418}
+  - {fileID: 1456815248}
   m_Father: {fileID: 1249789365}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
