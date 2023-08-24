@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
     public Image barraEnergia;
     public Image panelPerdeu;
     public Image panelGanhou;
-    public TextMeshProUGUI txtCenouras;
-    public TextMeshProUGUI txtEstrelas;
+    public Text txtCenouras;
+    public Text txtEstrelas;
     public TextMeshProUGUI txtVida;
 
     public static PlayerController Instance { get; private set; }

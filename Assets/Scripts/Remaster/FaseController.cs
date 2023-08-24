@@ -14,7 +14,7 @@ public class faseController : MonoBehaviour
 
     void Start()
     {
-        MontarFase(1);
+        MontarFase(6);
         PlayerController.Instance.DefinirPosicaoInicialPlayer(0, 3);
     }
 
@@ -24,7 +24,7 @@ public class faseController : MonoBehaviour
 
         switch (numeroDaFase)
         {
-            case 1:
+            /*case 1:
 
                 for (int i = 0; i < 7; i++)
                 {
@@ -57,10 +57,10 @@ public class faseController : MonoBehaviour
 
                 DefinirToca(11, 5);
 
-                break;
+                break;*/
           
 
-            case 2:
+           /* case 2:
                 DefinirArmadilha(1, 3);
                 DefinirArmadilha(3, 3);
                 DefinirArmadilha(10, 2);
@@ -324,7 +324,9 @@ public class faseController : MonoBehaviour
 
                 DefinirToca(11, 3);
 
-                break;
+                break;*/
+                
+
 
 
             default:

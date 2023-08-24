@@ -175,7 +175,6 @@ public class FaseSimples: MonoBehaviour {
 			PosicionaToca (LinhaToca, ColunaToca);
 
 			break;
-
 		case 4:
 			colaBloco.SetActive(false);
 			LinhaPlayer = 2;  // poisiçao player
@@ -268,7 +267,6 @@ public class FaseSimples: MonoBehaviour {
 			PosicionaToca (LinhaToca, ColunaToca);
 
 			break;
-		
 		case 6:
 			colaBloco.SetActive(false);
 			LinhaPlayer = 5;  // poisiçao player
@@ -311,7 +309,6 @@ public class FaseSimples: MonoBehaviour {
 			PosicionaToca (LinhaToca, ColunaToca);
 
 			break;
-
 		case 7:
 			colaBloco.SetActive(false);
 			LinhaPlayer = 0;  // poisiçao player
@@ -418,7 +415,6 @@ public class FaseSimples: MonoBehaviour {
 			PosicionaToca (LinhaToca, ColunaToca);
 
 			break;
-
 		case 9:
 			colaBloco.SetActive(false);
 			LinhaPlayer = 3;  // poisiçao player
@@ -540,7 +536,6 @@ public class FaseSimples: MonoBehaviour {
 			PosicionaToca (LinhaToca, ColunaToca);
 
 			break;
-
 		case 11:
 			colaBloco.SetActive(false);
 			LinhaPlayer = 0;  // poisiçao player
@@ -648,7 +643,6 @@ public class FaseSimples: MonoBehaviour {
 			PosicionaToca (LinhaToca, ColunaToca);
 
 			break;
-
 		case 13:
 			colaBloco.SetActive(false);
 			LinhaPlayer = 1;  // poisiçao player
@@ -829,7 +823,6 @@ public class FaseSimples: MonoBehaviour {
 			PosicionaToca (LinhaToca, ColunaToca);
 
 			break;
-
 		case 16:
 			colaBloco.SetActive(false);
 
