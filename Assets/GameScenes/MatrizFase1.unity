@@ -6798,7 +6798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &345266772
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37530,7 +37530,7 @@ MonoBehaviour:
   play: 0
   indiceDestino: 0
   Cenoura: {fileID: 3029742963373635576, guid: fd37672802e846f4e98c7974f7ee4910, type: 3}
-  Pai: {fileID: 1288285320}
+  Pai: {fileID: 5718124610962859600, guid: bdecb7ab50faed94399be455dbe034cb, type: 3}
   BombaAnim: {fileID: 2083393104}
   EstrelaAnim: {fileID: 1806377073}
   Bomba2Anim: {fileID: 1620362704}

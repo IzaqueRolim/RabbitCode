@@ -82,7 +82,8 @@ public class FaseSimples: MonoBehaviour {
 	//##################################### CRIAÇÃO DE FASES ############################################
 
 	void EscolhaFase(){
-		switch(PlayerPrefs.GetInt("NF")){
+		int fase = 2;
+		switch(fase){
 		case 1:
 			colaBloco.SetActive(true);
 			EstrelaAnim.SetBool ("mostraE", true);
