@@ -19,7 +19,7 @@ public class faseController : MonoBehaviour
 
     void Start()
     {
-        MontarFase(5);
+        MontarFase(6);
     }
 
     void MontarFase(int numeroDaFase)
@@ -183,24 +183,29 @@ public class faseController : MonoBehaviour
                 break;
                  
              case 6:
-                 DefinirArmadilha(3, 0);
-                 DefinirArmadilha(4, 2);
-                 DefinirArmadilha(1, 0);
-                 DefinirArmadilha(1, 3);
-                 DefinirArmadilha(9, 0);
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(4, 0);
+                DefinirToca(3, 0);
 
-                 DefinirCenoura(2, 0);
-                 DefinirCenoura(3, 3);
-                 DefinirCenoura(7, 2);
-                 DefinirCenoura(0, 0);
-                 DefinirCenoura(5, 3);
+                for(int i = 0; i < 12; i++)
+                {
+                    DefinirObstaculo(i, 5);
+                }
 
-                 DefinirEstrela(10, 0);
-                 DefinirEstrela(2, 2);
-                 DefinirEstrela(5, 0);
-                 DefinirEstrela(6, 4);
 
-                 DefinirToca(7, 5);
+                DefinirObstaculo(4, 4);
+                DefinirObstaculo(2, 3);
+                DefinirObstaculo(6, 3);
+                DefinirObstaculo(4, 2);
+
+                DefinirArmadilha(2, 2);
+                DefinirArmadilha(1, 1);
+              
+
+                 DefinirCenoura(3, 4);
+                 
+
+                 DefinirEstrela(5, 2);
+                 DefinirEstrela(3, 4);
 
                  break;
              case 7:
