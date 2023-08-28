@@ -315,7 +315,7 @@ public class FaseSimples: MonoBehaviour {
 			LinhaPlayer = 0;  // poisiçao player
 			ColunaPlayer = 1; 
 
-			LinhaToca =5;  // posição Toca
+			LinhaToca = 5;  // posição Toca
 			ColunaToca = 0;
 
 			//DefineObstaculo (1,1);  // define posicoes de Barreira
