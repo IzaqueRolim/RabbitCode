@@ -14,6 +14,10 @@ public class ReiniciarFase : MonoBehaviour
 
     public void ProximaFase()
     {
+        int faseSelecionada = PlayerPrefs.GetInt("FaseSelecionada");
+        PlayerPrefs.SetInt("FaseSelecionada",faseSelecionada+1);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 }

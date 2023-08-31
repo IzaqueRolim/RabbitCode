@@ -581,7 +581,6 @@ public class FaseSimples: MonoBehaviour {
 			DefineObstaculo (3,7);
 			DefineObstaculo (3,9);
 
-
 			DefineObstaculo (4,0);
 			DefineObstaculo (4,6);
 			DefineObstaculo (4,9);
@@ -615,7 +614,7 @@ public class FaseSimples: MonoBehaviour {
 
 
 			DefineObstaculo (0, 6);
-			DefineObstaculo  (0,7);
+			DefineObstaculo (0,7);
 			DefineObstaculo (0,8);
 
 			DefineObstaculo (1,6);

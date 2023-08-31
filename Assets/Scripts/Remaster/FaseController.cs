@@ -19,12 +19,12 @@ public class faseController : MonoBehaviour
 
     void Start()
     {
-        MontarFase(9);
+        MontarFase(13);
     }
 
-    void MontarFase(int numeroDaFase)
+    void MontarFase(int numeroFase)
     {
-        //int numeroDaFase = PlayerPrefs.GetInt("FaseSelecionada");
+        int numeroDaFase = PlayerPrefs.GetInt("FaseSelecionada");
 
         switch (numeroDaFase)
         {
@@ -180,9 +180,8 @@ public class faseController : MonoBehaviour
                 DefinirEstrela(4, 4);
 
                
-                break;
-                 
-             case 6:
+                break;     
+            case 6:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(4, 0);
                 DefinirToca(3, 0);
 
@@ -208,7 +207,7 @@ public class faseController : MonoBehaviour
                  DefinirEstrela(3, 4);
 
                  break;
-             case 7:
+            case 7:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(1, 5);
                 DefinirToca(0, 0);
 
@@ -263,7 +262,7 @@ public class faseController : MonoBehaviour
 
                  DefinirToca(2, 5);*/
                 break;
-             case 8:
+            case 8:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(9, 5);
                 DefinirToca(0, 0);
 
@@ -325,7 +324,7 @@ public class faseController : MonoBehaviour
 
 
                 break;
-             case 9:
+            case 9:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(4, 2);
                 DefinirToca(0, 0);
 
@@ -386,98 +385,178 @@ public class faseController : MonoBehaviour
 
                   DefinirToca(11, 3);*/
                 break;
-             case 10:
+            case 10:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(2, 0);
+                DefinirToca(11, 2);
 
-                 for (int i = 0; i <= 6; i++)
-                 {
-                     DefinirObstaculo(i, 5);
-                 }
-                 for (int i = 3; i <= 7; i++)
-                 {
-                     DefinirObstaculo(i, 1);
-                 }
+                DefinirCenoura(0, 2);
+                DefinirCenoura(4, 2);
+                DefinirCenoura(6, 2);
+                DefinirCenoura(7, 2);
+                DefinirCenoura(8, 2);
 
-                 DefinirArmadilha(1, 2);
-                 DefinirArmadilha(5, 4);
-                 DefinirArmadilha(7, 1);
-                 DefinirArmadilha(6, 3);
-                 DefinirArmadilha(9, 0);
+                DefinirArmadilha(3, 2);
+                DefinirArmadilha(4, 1);
 
-                 DefinirCenoura(4, 2);
-                 DefinirCenoura(8, 0);
-                 DefinirCenoura(10, 0);
-                 DefinirCenoura(6, 4);
+                DefinirEstrela(1, 2);
+                DefinirEstrela(2,4);
 
-                 DefinirEstrela(0, 0);
-                 DefinirEstrela(6, 2);
-                 DefinirEstrela(10, 3);
-
-                 DefinirToca(11, 3);
-
-
-                 break;
-             case 11:
-                 for (int i = 0; i <= 6; i++)
-                 {
-                     DefinirObstaculo(i, 5);
-                 }
-                 for (int i = 3; i <= 7; i++)
-                 {
-                     DefinirObstaculo(i, 1);
-                 }
-
-                 DefinirArmadilha(0, 3); //1
-                 DefinirArmadilha(3, 2); //2
-                 DefinirArmadilha(4, 2);//3
-                 DefinirArmadilha(6, 1);//4
-                 DefinirArmadilha(10, 2);//5
-
-                 DefinirCenoura(2, 0);
-                 DefinirCenoura(5, 4);
-                 DefinirCenoura(6, 2);
-                 DefinirCenoura(8, 15);
-                 DefinirArmadilha(11, 3);
-
-                 DefinirEstrela(2, 2);
-                 DefinirEstrela(8, 2);
-
-                 DefinirToca(8, 0);
-
-                 break;
-             case 12:
-                 for (int i = 0; i <= 6; i++)
-                 {
-                     DefinirObstaculo(i, 5);
-                 }
-                 for (int i = 3; i <= 7; i++)
-                 {
-                     DefinirObstaculo(i, 1);
-                 }
-
-                 DefinirArmadilha(2, 0);
-                 DefinirArmadilha(3, 3);
-                 DefinirArmadilha(5, 1);
-                 DefinirArmadilha(9, 0);
-                 DefinirArmadilha(10, 3);
-                 DefinirArmadilha(7, 4);
-                 DefinirArmadilha(9, 5);
-
-                 DefinirCenoura(1, 0);
-                 DefinirCenoura(7, 0);
-                 DefinirCenoura(9, 3);
-                 DefinirCenoura(7, 5);
-                 DefinirCenoura(11, 0);
-
-                 DefinirEstrela(1, 2);
-                 DefinirEstrela(5, 0);
-                 DefinirEstrela(9, 1);
-
-                 DefinirToca(11, 3);
-
-                 break;
+                for(int i = 0; i < 5; i++)
+                {
+                    DefinirObstaculo(i, 5);
+                    if(i== 0|| i== 1|| i == 5)
+                    {
+                        DefinirObstaculo(i, 4);
+                    }
+                }
+                for(int i = 0; i < 12; i++)
+                {
+                    if(i!= 2 && i!= 4)
+                    {
+                        DefinirObstaculo(i, 3);
+                    }
+                }
+                
 
 
+                break;
+            case 11:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(0, 5);
+                DefinirToca(7, 3);
 
+                DefinirCenoura(2,3); 
+                DefinirCenoura(4,1); 
+                DefinirCenoura(6,0);
+
+                DefinirArmadilha(2, 1);
+                DefinirArmadilha(8, 0);
+
+                DefinirEstrela(8, 2);
+                DefinirEstrela(4, 3);
+
+                for(int i = 1; i < 8; i++)
+                {
+                    DefinirObstaculo(i, 5);
+                }
+
+                DefinirObstaculo(3, 4);
+                DefinirObstaculo(7, 4);
+                DefinirObstaculo(8, 4);
+                DefinirObstaculo(9, 4);
+
+                DefinirObstaculo(0, 3);
+                DefinirObstaculo(6, 3);
+                DefinirObstaculo(9, 3);
+
+                for(int i = 0; i < 10; i++)
+                {
+                   if(i!= 3 && i!=4 && i!= 8)
+                    {
+                        DefinirObstaculo(i, 2);
+                    }
+                }
+                DefinirObstaculo(0, 1);
+                DefinirObstaculo(6, 1);
+                DefinirObstaculo(9, 1);
+
+                for(int i = 0; i < 4; i++)
+                {
+                    DefinirObstaculo(i, 0);
+                }
+                DefinirObstaculo(9, 0);
+
+                break;
+            case 12:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(11, 0);
+                DefinirToca(0, 1);
+
+                DefinirCenoura(3, 1);
+                DefinirCenoura(7, 1);
+
+                DefinirArmadilha(5, 4);
+                DefinirArmadilha(4, 0);
+
+                DefinirEstrela(7, 4);
+                DefinirEstrela(5, 1);
+                DefinirEstrela(5, 5);
+
+                DefinirObstaculo(6, 5);
+                DefinirObstaculo(7, 5);
+                DefinirObstaculo(8, 5);
+
+                DefinirObstaculo(6, 4);
+                DefinirObstaculo(8, 4);
+    
+                DefinirObstaculo(8, 3);
+
+                for(int i = 0; i < 10; i++)
+                {
+                    if (i != 7)
+                    {
+                        DefinirObstaculo(i, 2);
+                    }
+                }
+
+                DefinirObstaculo(9, 1);
+                DefinirObstaculo(10, 1);
+                DefinirObstaculo(11, 1);
+
+                DefinirObstaculo(7, 0);
+
+                break;
+            case 13:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(11, 4);
+                DefinirToca(3, 0);
+
+                DefinirCenoura(1, 4);
+                DefinirCenoura(4, 4);
+                DefinirCenoura(6, 4);
+                DefinirCenoura(0, 2);
+
+                DefinirArmadilha(9, 2);
+                DefinirArmadilha(8, 0);
+
+                DefinirEstrela(6, 1);
+                DefinirEstrela(10, 0);
+
+                for (int i = 0; i < 12; i++)
+                {
+                    DefinirObstaculo(i, 5);
+                }
+
+                DefinirObstaculo(0, 4);
+                DefinirObstaculo(8, 4);
+
+                DefinirObstaculo(0, 3);
+                DefinirObstaculo(2, 3);
+                DefinirObstaculo(3, 3);
+                DefinirObstaculo(4, 3);
+                DefinirObstaculo(10, 3);
+
+                DefinirObstaculo(10, 2);
+
+                DefinirObstaculo(0, 1);
+                DefinirObstaculo(1, 1);
+                DefinirObstaculo(2, 1);
+                DefinirObstaculo(3, 1);
+                DefinirObstaculo(4, 1);
+                DefinirObstaculo(10, 1);
+
+                DefinirObstaculo(0, 0);
+                DefinirObstaculo(1, 0);
+                DefinirObstaculo(2, 0);
+
+
+
+
+
+                break;
+            case 14:
+
+                break;
+            case 15:
+
+                break;
 
             default:
                 break;
