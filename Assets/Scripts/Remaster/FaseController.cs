@@ -19,14 +19,21 @@ public class faseController : MonoBehaviour
 
     void Start()
     {
-        MontarFase(13);
+        MontarFase(20);
     }
 
     void MontarFase(int numeroFase)
     {
         int numeroDaFase = PlayerPrefs.GetInt("FaseSelecionada");
 
-        switch (numeroDaFase)
+        int[] posicoesObstaculoY1;
+        int[] posicoesObstaculoY2;
+        int[] posicoesObstaculoY3;
+        int[] posicoesObstaculoY4;
+        int[] posicoesObstaculoY5;
+        int[] posicoesObstaculoY6;
+
+        switch (numeroFase)
         {
             case 1:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(0, 3);
@@ -552,12 +559,320 @@ public class faseController : MonoBehaviour
 
                 break;
             case 14:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(5, 2);
+                DefinirToca(11, 4);
+
+                DefinirCenoura(1, 4);
+                DefinirCenoura(5, 4);
+                DefinirCenoura(4, 1);
+                DefinirCenoura(1, 0);
+
+                DefinirArmadilha(1, 3);
+                DefinirArmadilha(8, 4);
+
+                DefinirEstrela(3, 0);
+                DefinirEstrela(9, 4);
+
+                for(int i = 0; i < 12; i++)
+                {
+                    DefinirObstaculo(i, 5);
+                }
+
+                DefinirObstaculo(0, 5);
+
+                for(int i = 3; i < 9; i++)
+                {
+                    if (i != 7)
+                    {
+                        DefinirObstaculo(i, 3);
+                    }
+                }
+
+                DefinirObstaculo(2, 2);
+                DefinirObstaculo(3, 2);
+                DefinirObstaculo(6, 2);
+                DefinirObstaculo(11, 2);
+
+                DefinirObstaculo(2, 1);
+                DefinirObstaculo(6, 1);
+                DefinirObstaculo(10, 1);
+                DefinirObstaculo(11, 1);
+
+                DefinirObstaculo(5, 0);
+                DefinirObstaculo(6, 0);
+                DefinirObstaculo(9, 0);
+                DefinirObstaculo(10, 0);
+                DefinirObstaculo(11, 0);
+
 
                 break;
             case 15:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(11, 3);
+                DefinirToca(0, 2);
+
+                DefinirCenoura(10,4);
+                DefinirCenoura(5, 3);
+                DefinirCenoura(5, 1);
+                DefinirCenoura(10,0);
+
+                DefinirArmadilha(5, 5);
+                DefinirArmadilha(5, 0);
+
+                DefinirEstrela(5, 4);
+                DefinirEstrela(10,2);
+
+                int[] posicoesY1 = { 4, 6, 8, 9, 10, 11 };
+                int[] posicoesY2 = { 4, 6, 8 };
+                int[] posicoesY3 = { 0, 1, 2, 3, 4, 6, 7, 8, 10 };
+
+                for(int  i = 0;i < posicoesY1.Length; i++)
+                {
+                    DefinirObstaculo(posicoesY1[i], 5);
+                }
+                for(int i = 0; i < posicoesY2.Length; i++)
+                {
+                    DefinirObstaculo(posicoesY2[i], 4);
+                    DefinirObstaculo(posicoesY2[i], 0);
+                }
+                for (int i = 0; i < posicoesY3.Length; i++)
+                {
+                    DefinirObstaculo(posicoesY3[i], 3);
+                    DefinirObstaculo(posicoesY3[i], 1);
+                }
+
+                break;
+            case 16:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(0, 5);
+                DefinirToca(8, 3);
+
+                int[] posicoesCenourasX = { 1,0,0,0,0,0,2,3,4,2,3};
+                int[] posicoesCenourasY = { 0,3,4,5,6,7,11,11,8,4,2};
+
+                for(int i = 0; i < posicoesCenourasX.Length; i++)
+                {
+                    DefinirCenoura(posicoesCenourasY[i], posicoesCenourasX[i]);
+                }
+
+                DefinirArmadilha(2, 4);
+                DefinirArmadilha(9, 2);
+
+                DefinirEstrela(8, 2);
+                DefinirEstrela(0, 3);
+
+                posicoesObstaculoY1 = new int[]{ 1,2,3,5,6,7,8,9,10,11};
+                posicoesObstaculoY2 = new int[]{ 1,3,5};
+                posicoesObstaculoY3 = new int[]{ 1,3,4,5,7,9,10};
+                posicoesObstaculoY4 = new int[]{ 1,10};
+                posicoesObstaculoY5 = new int[]{ 1,2,3,4,5,6,7,8,9,10};
+
+                for(int i = 0; i < posicoesObstaculoY1.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY1[i], 5);
+                }
+                for (int i = 0; i < posicoesObstaculoY2.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY2[i], 4);
+                }
+                for (int i = 0; i < posicoesObstaculoY3.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY3[i], 3);
+                }
+                for (int i = 0; i < posicoesObstaculoY4.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY4[i], 2);
+                }
+                for (int i = 0; i < posicoesObstaculoY5.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY5[i], 1);
+                }
+
+                break;
+            case 17:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(6, 2);
+                DefinirToca(4, 5);
+
+                DefinirCenoura(4, 4);
+                DefinirCenoura(7, 3);
+                DefinirCenoura(3, 0);
+                DefinirCenoura(8, 0);
+
+                DefinirArmadilha(6, 3);
+                DefinirArmadilha(8, 4);
+
+                DefinirEstrela(2, 0);
+                DefinirEstrela(10, 0);
+
+                posicoesObstaculoY1 = new int[]{ 0,1,2,3,5};
+                posicoesObstaculoY2 = new int[]{ 0,1,2,6,10};
+                posicoesObstaculoY3 = new int[]{ 2,3,9};
+                posicoesObstaculoY4 = new int[]{ 3,4,8};
+                posicoesObstaculoY5 = new int[]{ 0,1,2,3,9,10,11};
+                posicoesObstaculoY6 = new int[]{ 0,1,6};
+
+                for(int i = 0; i < posicoesObstaculoY1.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY1[i], 5);
+                }
+                for (int i = 0; i < posicoesObstaculoY2.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY2[i], 4);
+                }
+                for (int i = 0; i < posicoesObstaculoY3.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY3[i], 3);
+                }
+                for (int i = 0; i < posicoesObstaculoY4.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY4[i], 2);
+                }
+                for (int i = 0; i < posicoesObstaculoY5.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY5[i], 1);
+                }
+                for (int i = 0; i < posicoesObstaculoY6.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY6[i], 0);
+                }
 
                 break;
 
+            case 18:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(0, 0);
+                DefinirToca(11, 3);
+
+                DefinirCenoura(4, 4);
+                DefinirCenoura(6, 4);
+                DefinirCenoura(9, 4);
+                DefinirCenoura(3, 2);
+                DefinirCenoura(6, 0);
+                DefinirCenoura(3, 0);
+
+                DefinirArmadilha(6, 2);
+                DefinirArmadilha(10, 2);
+
+                DefinirEstrela(0, 2);
+                DefinirEstrela(9, 1);
+
+                posicoesObstaculoY1 = new int[] {0,1,2,3,4,5,6,7,8,9,10,11 };
+                posicoesObstaculoY2 = new int[] {0,1,2,10 };
+                posicoesObstaculoY3 = new int[] {0,1,2,4,5,6,7,8 };
+                posicoesObstaculoY4 = new int[] {7,8 };
+                posicoesObstaculoY5 = new int[] {0,1,2,4,5,6,7,8,11};
+                posicoesObstaculoY6 = new int[] {8,9,10,11};
+
+                for(int i = 0; i < posicoesObstaculoY1.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY1[i], 5);
+                }
+                for (int i = 0; i < posicoesObstaculoY2.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY2[i], 4);
+                }
+                for (int i = 0; i < posicoesObstaculoY3.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY3[i], 3);
+                }
+                for (int i = 0; i < posicoesObstaculoY4.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY4[i], 2);
+                }
+                for (int i = 0; i < posicoesObstaculoY5.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY5[i], 1);
+                }
+                for (int i = 0; i < posicoesObstaculoY6.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY6[i], 0);
+                }
+
+
+                break; 
+            case 19:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(2, 5);
+                DefinirToca(11, 5);
+
+                DefinirCenoura(2, 5);
+                DefinirCenoura(2, 2);
+                DefinirCenoura(3, 2);
+                DefinirCenoura(6, 2);
+                DefinirCenoura(7, 4);
+                DefinirCenoura(11,3);
+
+                DefinirArmadilha(7, 0);
+                DefinirArmadilha(8, 2);
+
+                DefinirEstrela(3, 0);
+                DefinirEstrela(9, 0);
+
+                posicoesObstaculoY1 = new int[] {1,3,4,5,6,7,8,10 };
+                posicoesObstaculoY2 = new int[] {1,3,4,5,8,10 };
+                posicoesObstaculoY3 = new int[] {1,3,4,5,8,9,10 };
+                posicoesObstaculoY4 = new int[] {1,9 };
+                posicoesObstaculoY5 = new int[] {1,4,5,6 };
+
+                for(int i = 0; i < posicoesObstaculoY1.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY1[i], 5);
+                }
+                for (int i = 0; i < posicoesObstaculoY2.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY2[i],4);
+                }
+                for (int i = 0; i < posicoesObstaculoY3.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY3[i], 3);
+                }
+                for (int i = 0; i < posicoesObstaculoY4.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY4[i], 2);
+                }
+                for (int i = 0; i < posicoesObstaculoY5.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY5[i], 1);
+                    DefinirObstaculo(posicoesObstaculoY5[i], 0);
+                }
+
+                break; 
+            case 20:
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(1, 5);
+                DefinirToca(9, 0);
+
+                DefinirCenoura(3, 0);
+                DefinirCenoura(4, 0);
+                DefinirCenoura(3, 2);
+                DefinirCenoura(3, 4);
+                DefinirCenoura(8, 4);
+                DefinirCenoura(11,2);
+                DefinirCenoura(11,0);
+
+                DefinirArmadilha(5, 2);
+                DefinirArmadilha(1, 1);
+
+                DefinirEstrela(0, 0);
+                DefinirEstrela(3, 3);
+
+                posicoesObstaculoY1 = new int[] { 0,2,3,4,5,6,7,8,9,10,11};
+                posicoesObstaculoY2 = new int[] { 2,8,9,10};
+                posicoesObstaculoY3 = new int[] { 2,3,4,5,6,8,9,10};
+
+                for(int i = 0; i < posicoesObstaculoY1.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY1[i], 5);
+                }
+                for (int i = 0; i < posicoesObstaculoY2.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY2[i], 3);
+                    DefinirObstaculo(posicoesObstaculoY2[i], 2);
+                }
+                for (int i = 0; i < posicoesObstaculoY3.Length; i++)
+                {
+                    DefinirObstaculo(posicoesObstaculoY3[i], 1);
+                }
+
+                DefinirObstaculo(2, 4);
+                DefinirObstaculo(8, 0);
+
+                break;
             default:
                 break;
         }

@@ -18,6 +18,10 @@ public class ReiniciarFase : MonoBehaviour
         PlayerPrefs.SetInt("FaseSelecionada",faseSelecionada+1);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
+    public void CarregaCena(string cena)
+    {
+        SceneManager.LoadScene(cena);
     }
 }
