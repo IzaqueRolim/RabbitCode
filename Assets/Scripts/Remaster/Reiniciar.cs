@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class Reiniciar : MonoBehaviour {
 
 	public  void reiniciarFase(){
-		SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+        SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 	}
 
 	public void CarregaCena(string cena){
@@ -14,7 +15,7 @@ public class Reiniciar : MonoBehaviour {
 	}
 
 	public void SetaFezTutorial(){
-	PlayerPrefs.SetInt("fezTutorial",1);
+		PlayerPrefs.SetInt("fezTutorial",1);
 	}
 
 }

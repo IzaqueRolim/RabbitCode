@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
 
     float velocidade = 3f;
     float velocidadeFome = 3f;
-    float energia = 20f;
+    float energia;
+    string mensagemPerdeu;
 
     bool podeAndar = false;
 
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
     public Text txtCenouras;
     public Text txtEstrelas;
     public TextMeshProUGUI txtVida;
+
+    private Animator anim;
 
     public static PlayerController Instance { get; private set; }
 
@@ -49,7 +52,9 @@ public class PlayerController : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         DefinirPosicaoInicialPlayer(0,3);
-        txtVida.text = ((int)energia).ToString();
+
+        anim = GetComponent<Animator>();
+        
        // PlayerPrefs.DeleteAll();
     }
 
@@ -69,8 +74,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 // O jimmy desmaia por falta de energia.
-                string mensagemPerdeu = "Suas energias acabaram!Faça um caminho mais curto da proxima vez1";
-                Desmaia(mensagemPerdeu);
+                mensagemPerdeu = "Suas energias acabaram!Faça um caminho mais curto da proxima vez";
+                Desmaia();
             }
         }
     }
@@ -78,49 +83,62 @@ public class PlayerController : MonoBehaviour
     public void IrAoDestino()
     {
         txtVida.text = ((int)energia).ToString();
-        if (Destinos[index].direcao == "COL")
+        if (Destinos[index].direcao == "COL")   // Se a direção for igual a "Coluna" o player vai primeiro ate a Coluna de destino e depois para a Linha
         {
-            if (Destinos[index].destino.y != transform.position.y)
+            anim.speed = 1f;
+            if (Destinos[index].destino.y != transform.position.y) // Se o player ainda nao chegou na coluna de destino, ele continua andando ate chegar.  
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].destino.y), velocidade * Time.deltaTime);
                 energia -= Time.deltaTime * velocidadeFome;
+                anim.SetBool("anda", true);
+                anim.speed = 0.7f;
             }
 
-            else if (Destinos[index].destino.x != transform.position.x)
+            else if (Destinos[index].destino.x != transform.position.x) // Se o player ainda nao chegou na linha de destino, ele continua andando ate chegar. 
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].destino.x, transform.position.y), velocidade * Time.deltaTime);
                 energia -= Time.deltaTime * velocidadeFome;
+                anim.SetBool("anda", true);
+                anim.speed = 1.5f;
             }
-            else
+            else // Se ele chegou no destino, ele incrementa o index para poder ir ate o proximo destino da lista, ou finaliza o percurso se estiver na ultima posicao.
             {
-                if (index == Destinos.Count - 1)
+                if (index == Destinos.Count - 1)    // Se o player tiver na ultima posicao da Lista ele para de andar.
                 {
-                    podeAndar = false;
-                    Destinos.Clear();
-                    index = 0;
+                    podeAndar = false;              // Para de andar.  
+                    anim.SetBool("anda", false);   // Desativa a animação de andar.
+                    Destinos.Clear();               // Limpa a lista de destino para adicionar outros elementos.
+                    index = 0;                      // Seta o index pra 0 para poder percorrer a lista novamente.
                     return;
                 }
                 index++;
             }
         }
+
+        // Se aplica a mesma logica porem aqui ele vai primeiro em direcao a Linha e depois pra Coluna
         else if (Destinos[index].direcao == "LIN")
         {
-
+            
             if (Destinos[index].destino.x != transform.position.x)
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].destino.x, transform.position.y), velocidade * Time.deltaTime);
                 energia -= Time.deltaTime * velocidadeFome;
+                anim.SetBool("anda", true);
+                anim.speed = 1.5f;
             }
             else if (Destinos[index].destino.y != transform.position.y)
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].destino.y), velocidade * Time.deltaTime);
                 energia -= Time.deltaTime * velocidadeFome;
+                anim.SetBool("anda", true);
+                anim.speed = 0.7f;
             }
             else
             {
                 if (index == Destinos.Count - 1)
                 {
                     podeAndar = false;
+                    anim.SetBool("anda", false);
                     Destinos.Clear();
                     index = 0;
                     return;
@@ -149,16 +167,24 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void Desmaia(string mensagem)
+    public void SetarEnergiaInicial(float energiaInicial) {
+        energia  = energiaInicial;
+        txtVida.text = ((int)energia).ToString();
+    }
+
+    public void Desmaia()
     {
-        podeAndar = false;
         panelPerdeu.gameObject.SetActive(true);
 
         int qtdFilhosPanel = panelPerdeu.transform.GetChild(0).childCount;
 
-        Debug.Log(qtdFilhosPanel.ToString()+"OLa");
-        panelPerdeu.transform.GetChild(0).GetChild(qtdFilhosPanel-1).GetComponent<TextMeshProUGUI>().text = mensagem;
-        // animacao para desmaiar
+        Debug.Log(qtdFilhosPanel.ToString()+"Ola");
+        panelPerdeu.transform.GetChild(0).GetChild(qtdFilhosPanel-1).GetComponent<TextMeshProUGUI>().text = mensagemPerdeu;  
+    }
+
+    public void AtivarAnimacaoDeDesmaio()
+    {
+        anim.SetTrigger("desmaia");
     }
 
     public void Ganhou()
@@ -180,7 +206,7 @@ public class PlayerController : MonoBehaviour
         {
             qtdCenouras++;
             txtCenouras.text = "Cenouras: " + qtdCenouras.ToString();
-            energia++;
+            energia+=5;
              
             Destroy(collision.gameObject);
             //Animacao do coelho guardando ou comendo a cenoura.
@@ -195,13 +221,18 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "armadilha")
         {
-            string mensagemPerdeu = "Você foi capturado!Cuidado com as armadilhas";
-            Desmaia(mensagemPerdeu);
+            mensagemPerdeu = "Você foi capturado!Cuidado com as armadilhas";
+            podeAndar = false;
+            
+            collision.GetComponent<Animator>().SetTrigger("aparecer");
+
         }
         if (collision.gameObject.tag == "obstaculo")
         {
-            string mensagemPerdeu = "Cuidado com as caixas";
-            Desmaia(mensagemPerdeu);
+            mensagemPerdeu = "Cuidado com as caixas";
+            podeAndar = false;
+            anim.SetTrigger("desmaia");
+
         }
         if (collision.gameObject.tag == "toca")
         {
