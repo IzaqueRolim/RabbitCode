@@ -28,7 +28,7 @@ public class SelecaoFase : MonoBehaviour {
 		Botao [0].interactable = true;
 
 		for(int i = 1; i < 20; i ++){
-			if (PlayerPrefs.GetInt ("Fase" + i.ToString ()) == 0) { // Caso o dado guardado na memoria seja igual a 0, quer dizer que ela não foi concluida
+			if (PlayerPrefs.GetInt ("Fase" + i.ToString ()) == 0) { // Caso o dado guardado na memoria seja igual a 0, quer dizer que a fase não foi concluida
 				Botao [i].interactable = false;
 			} else {
 				Botao [i].interactable = true;

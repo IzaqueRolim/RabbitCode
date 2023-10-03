@@ -24955,7 +24955,7 @@ MonoBehaviour:
     type: 3}
   prefabToca: {fileID: 1547001669734427127, guid: 564a1885b4002f54ca38be91ae6e342d,
     type: 3}
-  prefabCenoura: {fileID: 4093197908894935232, guid: e235eecf60258054abdd71899b2594b1,
+  prefabCenoura: {fileID: 8340816058579114203, guid: a612708accbe6914aa4aea02e129910f,
     type: 3}
   prefabEstrela: {fileID: 2828034499271884884, guid: d31b2306f2d1c8944bf7c990b5d61afb,
     type: 3}
