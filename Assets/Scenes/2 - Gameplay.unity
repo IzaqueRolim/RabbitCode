@@ -1567,7 +1567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109860599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.876, z: 0.74156827}
+  m_LocalPosition: {x: 0.3, y: -5.879, z: 0.74156827}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.78558356}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2575,8 +2575,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184516424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.03, y: 4.5, z: 0}
-  m_LocalScale: {x: 2.3235087, y: 2.3235087, z: 2.3235087}
+  m_LocalPosition: {x: 5.29, y: 4.71, z: 0}
+  m_LocalScale: {x: 2.8960214, y: 2.8960214, z: 2.8960214}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3051,6 +3051,10 @@ MonoBehaviour:
   barraEnergia: {fileID: 111658057}
   panelPerdeu: {fileID: 131145274}
   panelGanhou: {fileID: 1481731512}
+  imgEstrelas: {fileID: 218534832}
+  spriteUmaEstrela: {fileID: 21300000, guid: 1a6329975245bab4b80664c63af3ffdd, type: 3}
+  spriteDuasEstrela: {fileID: 21300000, guid: 1995955573103e844a1f1e3f6a9f6a93, type: 3}
+  spriteTresEstrela: {fileID: 21300000, guid: 1564dcf33a11d8d45a6103c66cb37c4a, type: 3}
   txtCenouras: {fileID: 1192190426}
   txtEstrelas: {fileID: 126018798}
   txtVida: {fileID: 108988722}
@@ -3094,7 +3098,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f909f919449d4c8418dad2a3aa9c4ac0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5813,7 +5817,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444782097}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -3.8709998, z: 0.74156827}
+  m_LocalPosition: {x: 0.3, y: -2.889, z: 0.74156827}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.78558356}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11389,7 +11393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804570135}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -1.814, z: 0.74156827}
+  m_LocalPosition: {x: 0.3, y: -4.901, z: 0.74156827}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.78558356}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14294,10 +14298,10 @@ RectTransform:
   m_Father: {fileID: 1249789365}
   m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 103, y: -8.6912}
-  m_SizeDelta: {x: 277.8565, y: 493.2021}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 138.93, y: -8.691193}
+  m_SizeDelta: {x: 277.85645, y: -226.79791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1081765856
 CanvasRenderer:
@@ -14799,7 +14803,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121935280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -2.8684614, z: 0.74156827}
+  m_LocalPosition: {x: 0.3, y: -3.893, z: 0.74156827}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.78558356}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15814,10 +15818,10 @@ RectTransform:
   m_Father: {fileID: 1249789365}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 567, y: -291.6}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -97, y: -291.6}
+  m_SizeDelta: {x: 100, y: -620}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172231357
 MonoBehaviour:
@@ -16564,7 +16568,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.4156863, g: 0.7372549, b: 0.9686275, a: 1}
+  m_BackGroundColor: {r: 0.30980393, g: 0.8588236, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -17284,7 +17288,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: -1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 16
@@ -24499,7 +24503,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1708590689}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1275998541}
+        m_TargetAssemblyTypeName: ReiniciarFase, Assembly-CSharp
+        m_MethodName: CarregaCena
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 1 - SelecaoFase
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1708590689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28927,7 +28943,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996535800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.34, y: -5.87, z: 0.74156827}
+  m_LocalPosition: {x: 0.3, y: -0.834, z: 0.74156827}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.71680385}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30540,7 +30556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120028248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -4.9179997, z: 0.74156827}
+  m_LocalPosition: {x: 0.3, y: -1.886, z: 0.74156827}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.78558356}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -11,7 +11,8 @@ public class Reiniciar : MonoBehaviour {
 	}
 
 	public void CarregaCena(string cena){
-		SceneManager.LoadScene (cena);
+        Time.timeScale = 1;
+        SceneManager.LoadScene (cena);
 	}
 
 	public void SetaFezTutorial(){

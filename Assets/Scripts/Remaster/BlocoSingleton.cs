@@ -35,7 +35,6 @@ public class BlocoSingleton : MonoBehaviour
     private void GetValoresDropdown()
     {
         int qtdValoresJogados = CountActiveGameObjects(this.transform);
-        Debug.Log(qtdValoresJogados);
 
         // Limpo as listas pois os valores repetem se nao limpar
         Linha.Clear();
@@ -68,6 +67,7 @@ public class BlocoSingleton : MonoBehaviour
 
             Direcao.Add(direcao);
             Linha.Add(linha.value);
+            Debug.Log(5 - linha.value);
             Coluna.Add(coluna.value);
 
         }

@@ -106,11 +106,17 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         // Determine as linhas e caso o sprite for verde, inverte a linha pela coluna.
         int numLinhas = 6;
         int numColunas = 12;
+        Vector2 posicaoPlayer = PlayerController.Instance.GetPosicaoPlayer();
+        float posicaoPlayerY = posicaoPlayer.y;
+        float posicaoPlayerX = posicaoPlayer.x;
 
         if (this.GetComponent<Image>().sprite == spriteBlocoVerde)
         {
             numLinhas = 12;
             numColunas = 6;
+
+            posicaoPlayerY = posicaoPlayer.x;
+            posicaoPlayerX = posicaoPlayer.y;
         }
 
         // Preencha as listas de linhas e colunas
@@ -147,8 +153,10 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         blocoLocalCodigo = paiBlocoLocalCodigo.transform.GetChild(indexDoProximoBloco).gameObject;
         blocoLocalCodigo.SetActive(true);
 
-        // Incrementar o índice
-        index++;
+        
+        dropdownLinha.value = Mathf.RoundToInt(posicaoPlayerY);
+        dropdownColuna.value = Mathf.RoundToInt(posicaoPlayerX);
+        
 
     }
 

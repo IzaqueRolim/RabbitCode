@@ -19,7 +19,7 @@ public class faseController : MonoBehaviour
 
     void Start()
     {
-        MontarFase(1);
+        MontarFase(2);
 
         // Fases 16,18,19 nao estao prontas
         // Fases 6,10,11 foram consertadas
@@ -76,24 +76,25 @@ public class faseController : MonoBehaviour
 
                 break;
             case 2:
-                PlayerController.Instance.DefinirPosicaoInicialPlayer(2,1);
+                PlayerController.Instance.DefinirPosicaoInicialPlayer(2,2);
                 PlayerController.Instance.SetarEnergiaInicial(20);
-                DefinirToca(9, 0);
+                DefinirToca(9, 1);
 
                 for (int i = 0; i < 12; i++)
                 {
                     DefinirObstaculo(i, 5);
+                    DefinirObstaculo(i, 0);
                 }
 
 
-                 DefinirArmadilha(4,1);
-                 DefinirArmadilha(6,1);
+                 DefinirArmadilha(4,2);
+                 DefinirArmadilha(6,2);
 
-                 DefinirCenoura(5, 1);
+                 DefinirCenoura(5, 2);
 
-                 DefinirEstrela(4, 2);
-                 DefinirEstrela(6, 0);
-                 DefinirEstrela(9, 1);
+                 DefinirEstrela(4, 3);
+                 DefinirEstrela(6, 1);
+                 DefinirEstrela(9, 2);
 
 
                  break;

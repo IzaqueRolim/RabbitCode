@@ -34,13 +34,14 @@ public class SelecaoFase : MonoBehaviour {
 				Botao [i].interactable = true;
 			}
 		}
-		for (int i = 0; i < 20; i++) {
+		for (int i = 1; i < 21; i++) {
+			Debug.Log(PlayerPrefs.GetInt("QuantidadeDeEstrelaDaFase" + i.ToString()));
 			if (PlayerPrefs.GetInt ("QuantidadeDeEstrelaDaFase" + i.ToString ()) == 1) {
-				Estrelas [i].sprite = UmaEstrela;
+				Estrelas [i-1].sprite = UmaEstrela;
 			} else if (PlayerPrefs.GetInt ("QuantidadeDeEstrelaDaFase" + i.ToString ()) == 2) {
-				Estrelas [i].sprite = DuasEstrela;
+				Estrelas [i-1].sprite = DuasEstrela;
 			} else if (PlayerPrefs.GetInt ("QuantidadeDeEstrelaDaFase" + i.ToString ()) == 3) {
-				Estrelas [i].sprite = TresEstrela;
+				Estrelas [i-1].sprite = TresEstrela;
 			}
 		}
 

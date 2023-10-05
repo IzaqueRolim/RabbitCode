@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [System.Serializable]
     public class Destino
     {
+        
         public string direcao;
         public Vector3 destino;
     }
@@ -31,6 +32,10 @@ public class PlayerController : MonoBehaviour
     public Image barraEnergia;
     public Image panelPerdeu;
     public Image panelGanhou;
+    public Image imgEstrelas;
+    public Sprite spriteUmaEstrela;
+    public Sprite spriteDuasEstrela;
+    public Sprite spriteTresEstrela;
     public Text txtCenouras;
     public Text txtEstrelas;
     public TextMeshProUGUI txtVida;
@@ -106,7 +111,7 @@ public class PlayerController : MonoBehaviour
                 if (index == Destinos.Count - 1)    // Se o player tiver na ultima posicao da Lista ele para de andar.
                 {
                     podeAndar = false;              // Para de andar.  
-                    anim.SetBool("anda", false);   // Desativa a animação de andar.
+                    anim.SetBool("anda", false);    // Desativa a animação de andar.
                     Destinos.Clear();               // Limpa a lista de destino para adicionar outros elementos.
                     index = 0;                      // Seta o index pra 0 para poder percorrer a lista novamente.
                     return;
@@ -154,7 +159,9 @@ public class PlayerController : MonoBehaviour
     {
         for (int i = 0; i < X.Count; i++)
         {
-            Destinos.Add(new Destino { direcao = direcao[i], destino = new Vector3(X[i], Y[i]) });
+            // Esse 5 - Y[i] inverte o valor da linha(5 vira 0, 4 vira 1, 3 vira 2, 2 vira 3, 1 vira 4, 0 vira 5)
+            // Essa mudança foi solicitado pelo prof Carlos no dia 5/10/23.
+            Destinos.Add(new Destino { direcao = direcao[i], destino = new Vector3(X[i], 5-Y[i]) });
 
             // Se alguma posicao desse array for a do Jimmy, ele inicia nela.
             // Resolve o erro dele sempre voltar pra primeira posicao.
@@ -188,16 +195,30 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Ganhou()
-    {
-        // Seta a quantidade de estrelas da fase para vizualicação na tela inicial.
+    { 
+
         int FaseSelecionada = PlayerPrefs.GetInt("FaseSelecionada");
-        PlayerPrefs.SetInt("QuantidadeDeEstrelaDaFase"+FaseSelecionada.ToString(),qtdEstrelas);
+        int QuantidadeDeEstrelaDaFase = PlayerPrefs.GetInt("QuantidadeDeEstrelaDaFase" + FaseSelecionada.ToString());
+        
+        if (QuantidadeDeEstrelaDaFase <= qtdEstrelas){
+            // Seta a quantidade de estrelas da fase para vizualicação na tela de seleção de fases.
+            PlayerPrefs.SetInt("QuantidadeDeEstrelaDaFase" + FaseSelecionada.ToString(), qtdEstrelas);
+        }
 
         // Seta que a fase foi concluida
         PlayerPrefs.SetInt("Fase" + FaseSelecionada, 1);
 
         // Abre o painel com a mensagem de vitoria.
         panelGanhou.gameObject.SetActive(true);
+
+        // Seta sprite de quantidades de estrelas.
+        Sprite spriteQtdEstrelas = qtdEstrelas == 3 ? spriteTresEstrela : qtdEstrelas == 2 ? spriteDuasEstrela : spriteUmaEstrela;
+        imgEstrelas.sprite = spriteQtdEstrelas;
+    }
+
+    public Vector2 GetPosicaoPlayer()
+    {
+        return transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -221,7 +242,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "armadilha")
         {
-            mensagemPerdeu = "Você foi capturado!Cuidado com as armadilhas";
+            mensagemPerdeu = "Cuidado com as armadilhas";
             podeAndar = false;
             
             collision.GetComponent<Animator>().SetTrigger("aparecer");
@@ -236,6 +257,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "toca")
         {
+            Debug.Log("Ola");
             Ganhou();
         }
     }
