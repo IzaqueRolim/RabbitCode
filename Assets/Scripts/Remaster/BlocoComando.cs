@@ -154,7 +154,7 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         blocoLocalCodigo.SetActive(true);
 
         
-        dropdownLinha.value = Mathf.RoundToInt(posicaoPlayerY);
+        dropdownLinha.value = 5 - Mathf.RoundToInt(posicaoPlayerY);
         dropdownColuna.value = Mathf.RoundToInt(posicaoPlayerX);
         
 

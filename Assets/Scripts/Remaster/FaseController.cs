@@ -19,7 +19,7 @@ public class faseController : MonoBehaviour
 
     void Start()
     {
-        MontarFase(2);
+        MontarFase(9);
 
         // Fases 16,18,19 nao estao prontas
         // Fases 6,10,11 foram consertadas
@@ -203,6 +203,7 @@ public class faseController : MonoBehaviour
                 break;     
             case 6:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(1, 3);
+                PlayerController.Instance.SetarEnergiaInicial(20);
                 DefinirToca(9, 3);
 
                 DefinirEstrela(3, 3);
@@ -262,33 +263,6 @@ public class faseController : MonoBehaviour
                 DefinirEstrela(2, 0);
                 DefinirEstrela(11,1);
 
-                /*for (int i = 0; i <= 6; i++)
-                {
-                     DefinirObstaculo(i, 5);
-                }
-                for (int i = 3; i <= 7; i++)
-                {
-                     DefinirObstaculo(i, 1);
-                }
-
-                 DefinirArmadilha(1, 3);
-                 DefinirArmadilha(3, 4);
-                 DefinirArmadilha(3, 2);
-                 DefinirArmadilha(8, 2);
-                 DefinirArmadilha(2, 1);
-                 DefinirArmadilha(5, 2);
-
-                 DefinirCenoura(2, 0);
-                 DefinirCenoura(7, 2);
-                 DefinirCenoura(3, 3);
-                 DefinirCenoura(4, 2);
-                 DefinirCenoura(6, 4);
-
-                 DefinirEstrela(0, 0);
-                 DefinirEstrela(0, 5);
-                 DefinirEstrela(0, 8);
-
-                 DefinirToca(2, 5);*/
                 break;
             case 8:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(9, 5);
@@ -355,12 +329,7 @@ public class faseController : MonoBehaviour
                     DefinirObstaculo(i, 3);
                 }
                 DefinirObstaculo(0,4);
-                DefinirObstaculo(1,4);
-                DefinirObstaculo(7, 5);
-                DefinirObstaculo(0,3);
-                DefinirObstaculo(1,3);
-                DefinirObstaculo(5,3);
-                DefinirObstaculo(7, 3);
+                DefinirObstaculo(1, 4);
 
                 DefinirObstaculo(0,1);
                 DefinirObstaculo(1,1);
@@ -377,6 +346,7 @@ public class faseController : MonoBehaviour
                 break;
             case 10:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(1, 3);
+                PlayerController.Instance.SetarEnergiaInicial(20);
                 DefinirToca(10, 3);
 
                 DefinirEstrela(2, 1);
@@ -410,15 +380,15 @@ public class faseController : MonoBehaviour
                 break;
             case 11:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(1, 3);
+                PlayerController.Instance.SetarEnergiaInicial(16);
                 DefinirToca(10, 4);
 
                 DefinirEstrela(3, 3);
                 DefinirEstrela(5, 3);
                 DefinirEstrela(7, 3);
 
-                DefinirCenoura(10, 1);
-                DefinirCenoura(1, 1);
                 DefinirCenoura(9, 3);
+                DefinirCenoura(5, 1);
 
                 posicoesObstaculoY1 = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
                 posicoesObstaculoY2 = new int[] { 2, 4, 6, 8, 10 };
@@ -553,8 +523,6 @@ public class faseController : MonoBehaviour
                     DefinirObstaculo(i, 5);
                 }
 
-                DefinirObstaculo(0, 5);
-
                 for(int i = 3; i < 9; i++)
                 {
                     if (i != 7)
@@ -677,12 +645,12 @@ public class faseController : MonoBehaviour
                 DefinirEstrela(10,0);
                 DefinirEstrela(9, 4);
 
-                posicoesObstaculoY1 = new int[]{ 0,1,2,3,4,5};
-                posicoesObstaculoY2 = new int[]{ 0,1,2,6,10};
-                posicoesObstaculoY3 = new int[]{ 2,3,9};
-                posicoesObstaculoY4 = new int[]{ 3,4,8};
+                posicoesObstaculoY1 = new int[]{ 0,1,2,3,4,5,11};
+                posicoesObstaculoY2 = new int[]{ 0,1,2,6,10,11};
+                posicoesObstaculoY3 = new int[]{ 0,1,2,3,9,10,11};
+                posicoesObstaculoY4 = new int[]{ 0,1,2,3,4,8,9,10,11};
                 posicoesObstaculoY5 = new int[]{ 0,1,2,3,9,10,11};
-                posicoesObstaculoY6 = new int[]{ 0,1,6};
+                posicoesObstaculoY6 = new int[]{ 0,1,6,11};
 
                 for(int i = 0; i < posicoesObstaculoY1.Length; i++)
                 {
