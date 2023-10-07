@@ -113,7 +113,6 @@ public class PlayerController : MonoBehaviour
                     podeAndar = false;              // Para de andar.  
                     anim.SetBool("anda", false);    // Desativa a animação de andar.
                     Destinos.Clear();               // Limpa a lista de destino para adicionar outros elementos.
-                    index = 0;                      // Seta o index pra 0 para poder percorrer a lista novamente.
                     return;
                 }
                 index++;
@@ -145,7 +144,7 @@ public class PlayerController : MonoBehaviour
                     podeAndar = false;
                     anim.SetBool("anda", false);
                     Destinos.Clear();
-                    index = 0;
+                    
                     return;
                 }
                 index++;
@@ -257,8 +256,14 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "toca")
         {
-            Debug.Log("Ola");
-            Ganhou();
+            if (qtdEstrelas > 0)
+            {
+                Ganhou();
+                return;
+            }
+            mensagemPerdeu = "Pegue pelo menos uma estrelas para passar de fase!";
+            podeAndar = false;
+            anim.SetTrigger("desmaia");
         }
     }
 

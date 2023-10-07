@@ -27,14 +27,14 @@ public class SelecaoFase : MonoBehaviour {
 	void VerificaBotoes(){
 		Botao [0].interactable = true;
 
-		for(int i = 1; i < 20; i ++){
+		for(int i = 1; i < 18; i ++){
 			if (PlayerPrefs.GetInt ("Fase" + i.ToString ()) == 0) { // Caso o dado guardado na memoria seja igual a 0, quer dizer que a fase não foi concluida
 				Botao [i].interactable = false;
 			} else {
 				Botao [i].interactable = true;
 			}
 		}
-		for (int i = 1; i < 21; i++) {
+		for (int i = 1; i < 19; i++) {
 			Debug.Log(PlayerPrefs.GetInt("QuantidadeDeEstrelaDaFase" + i.ToString()));
 			if (PlayerPrefs.GetInt ("QuantidadeDeEstrelaDaFase" + i.ToString ()) == 1) {
 				Estrelas [i-1].sprite = UmaEstrela;

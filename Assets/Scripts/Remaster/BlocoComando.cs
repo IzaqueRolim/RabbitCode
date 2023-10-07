@@ -107,7 +107,7 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         int numLinhas = 6;
         int numColunas = 12;
         Vector2 posicaoPlayer = PlayerController.Instance.GetPosicaoPlayer();
-        float posicaoPlayerY = posicaoPlayer.y;
+        float posicaoPlayerY = 5 - posicaoPlayer.y;
         float posicaoPlayerX = posicaoPlayer.x;
 
         if (this.GetComponent<Image>().sprite == spriteBlocoVerde)
@@ -116,7 +116,7 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             numColunas = 6;
 
             posicaoPlayerY = posicaoPlayer.x;
-            posicaoPlayerX = posicaoPlayer.y;
+            posicaoPlayerX = 5 - posicaoPlayer.y;
         }
 
         // Preencha as listas de linhas e colunas
@@ -154,7 +154,7 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         blocoLocalCodigo.SetActive(true);
 
         
-        dropdownLinha.value = 5 - Mathf.RoundToInt(posicaoPlayerY);
+        dropdownLinha.value =  Mathf.RoundToInt(posicaoPlayerY);
         dropdownColuna.value = Mathf.RoundToInt(posicaoPlayerX);
         
 

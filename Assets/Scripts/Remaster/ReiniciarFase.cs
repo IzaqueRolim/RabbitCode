@@ -9,11 +9,13 @@ public class ReiniciarFase : MonoBehaviour
 
    public void Reiniciar()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ProximaFase()
     {
+        Time.timeScale = 1;
         int faseSelecionada = PlayerPrefs.GetInt("FaseSelecionada");
         PlayerPrefs.SetInt("FaseSelecionada",faseSelecionada+1);
 
@@ -22,6 +24,7 @@ public class ReiniciarFase : MonoBehaviour
 
     public void CarregaCena(string cena)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(cena);
     }
 }
