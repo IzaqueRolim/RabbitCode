@@ -38,7 +38,7 @@ public class faseController : MonoBehaviour
 
         int[] posicoesObstaculoX1;
 
-        switch (numeroFase)
+        switch (numeroDaFase)
         {
             case 1:
                 PlayerController.Instance.DefinirPosicaoInicialPlayer(1, 3);
