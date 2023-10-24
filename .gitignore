@@ -5,7 +5,7 @@
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
-/[Bb]uild/
+BuildRabbitCode
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
@@ -75,3 +75,7 @@ BuildRabbitCode/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser
 BuildRabbitCode/MonoBleedingEdge/etc/mono/2.0/machine.config
 BuildRabbitCode/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser
 *.map
+BuildRabbitCode/RabbitCode_Data/StreamingAssets/UnityServicesProjectConfiguration.json
+BuildRabbitCode/UnityCrashHandler64.exe
+BuildRabbitCode/RabbitCode_Data/sharedassets3.assets
+BuildRabbitCode/MonoBleedingEdge/etc/mono/2.0/web.config
