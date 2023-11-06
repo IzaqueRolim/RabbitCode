@@ -22,7 +22,9 @@ public class Opcoes : MonoBehaviour {
 	bool EstouFora;
 	bool play;
 
-	public void opcoes(){
+
+
+    public void opcoes(){
 		
 		if (EstouFora == true) {
 			Destino = Dentro;
@@ -81,5 +83,21 @@ public class Opcoes : MonoBehaviour {
 		MovePainel ();
 		MoveConf ();
 		MoveInfo ();
-	}
+
+        // Verifica se algum controle foi conectado
+        if (Input.GetJoystickNames().Length > 0)
+        {
+            // Pelo menos um controle foi conectado
+            string[] joystickNames = Input.GetJoystickNames();
+            foreach (string name in joystickNames)
+            {
+                Debug.Log("Controle conectado: " + name);
+            }
+        }
+        else
+        {
+            // Nenhum controle conectado
+            Debug.Log("Nenhum controle conectado.");
+        }
+    }
 }
