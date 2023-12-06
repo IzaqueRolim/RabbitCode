@@ -84,7 +84,7 @@ public class Opcoes : MonoBehaviour {
 		MoveConf ();
 		MoveInfo ();
 
-        // Verifica se algum controle foi conectado
+        /*// Verifica se algum controle foi conectado
         if (Input.GetJoystickNames().Length > 0)
         {
             // Pelo menos um controle foi conectado
@@ -98,6 +98,6 @@ public class Opcoes : MonoBehaviour {
         {
             // Nenhum controle conectado
             Debug.Log("Nenhum controle conectado.");
-        }
+        }*/
     }
 }

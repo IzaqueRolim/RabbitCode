@@ -53,7 +53,7 @@ public class BlocoSingleton : MonoBehaviour
             
             Image childImage = childTransform.GetComponent<Image>();
 
-                Debug.Log(childTransform);
+                
             if (childImage.sprite == spriteBlocoVerde)
             {
                 linha = childTransform.GetChild(0).GetComponent<TMP_Dropdown>();
@@ -69,7 +69,6 @@ public class BlocoSingleton : MonoBehaviour
 
             Direcao.Add(direcao);
             Linha.Add(linha.value);
-            Debug.Log(5 - linha.value);
             Coluna.Add(coluna.value);
 
         }

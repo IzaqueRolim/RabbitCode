@@ -18,6 +18,7 @@ TagManager:
   - estrela
   - obstaculo
   - toca
+  - ControladorGLBoard
   layers:
   - Default
   - TransparentFX

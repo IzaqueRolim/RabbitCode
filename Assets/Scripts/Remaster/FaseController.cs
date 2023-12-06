@@ -19,6 +19,8 @@ public class faseController : MonoBehaviour
 
     void Start()
     {
+
+
         MontarFase(20);
 
         // Fases 16,18,19 nao estao prontas
@@ -27,6 +29,8 @@ public class faseController : MonoBehaviour
 
     void MontarFase(int numeroFase)
     {
+       
+
         int numeroDaFase = PlayerPrefs.GetInt("FaseSelecionada");
 
         int[] posicoesObstaculoY1;

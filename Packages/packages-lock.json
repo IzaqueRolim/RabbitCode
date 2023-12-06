@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.thinkted.glboard_unity": {
+      "version": "file:C:/Users/izaqu/Downloads/glboard-package-unity-main/glboard-package-unity-main",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

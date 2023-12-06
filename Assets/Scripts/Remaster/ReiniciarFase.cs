@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ReiniciarFase : MonoBehaviour
 {
- 
 
-   public void Reiniciar()
+    DateTime timeInit = DateTime.Now;
+
+
+    public void Reiniciar()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

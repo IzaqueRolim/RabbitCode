@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,7 +11,6 @@ public class PlayerController : MonoBehaviour
     [System.Serializable]
     public class Destino
     {
-        
         public string direcao;
         public Vector3 destino;
     }
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     List<Destino> Destinos = new List<Destino>();
     
-    public Image barraEnergia;
+    public UnityEngine.UI.Image barraEnergia;
     public Image panelPerdeu;
     public Image panelGanhou;
     public Image imgEstrelas;
@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     public static PlayerController Instance { get; private set; }
+
+    DateTime timeInit = DateTime.Now;
 
     private void Start()
     {
@@ -183,8 +185,13 @@ public class PlayerController : MonoBehaviour
 
         int qtdFilhosPanel = panelPerdeu.transform.GetChild(0).childCount;
 
-        Debug.Log(qtdFilhosPanel.ToString()+"Ola");
-        panelPerdeu.transform.GetChild(0).GetChild(qtdFilhosPanel-1).GetComponent<TextMeshProUGUI>().text = mensagemPerdeu;  
+        panelPerdeu.transform.GetChild(0).GetChild(qtdFilhosPanel-1).GetComponent<TextMeshProUGUI>().text = mensagemPerdeu;
+
+        int faseSelecionada = PlayerPrefs.GetInt("FaseSelecionada");
+
+        GLboardDatas controll = GameObject.FindGameObjectWithTag("ControladorGLBoard").GetComponent<GLboardDatas>();
+        controll.glboard.AddSectionInPhase(faseSelecionada.ToString(), STATUS_SECTION.DERROTA, qtdEstrelas, timeInit, DateTime.Now);
+        StartCoroutine(controll.glboard.SEND_USER_DATA());
     }
 
     public void AtivarAnimacaoDeDesmaio()
@@ -212,6 +219,11 @@ public class PlayerController : MonoBehaviour
         // Seta sprite de quantidades de estrelas.
         Sprite spriteQtdEstrelas = qtdEstrelas == 3 ? spriteTresEstrela : qtdEstrelas == 2 ? spriteDuasEstrela : spriteUmaEstrela;
         imgEstrelas.sprite = spriteQtdEstrelas;
+
+        // Enviar Dados para o GLBoard
+        GLboardDatas controll = GameObject.FindGameObjectWithTag("ControladorGLBoard").GetComponent<GLboardDatas>();
+        controll.glboard.AddSectionInPhase(FaseSelecionada.ToString(), STATUS_SECTION.VITORIA, qtdEstrelas, timeInit, DateTime.Now);
+        StartCoroutine(controll.glboard.SEND_USER_DATA());
     }
 
     public Vector2 GetPosicaoPlayer()
