@@ -51,10 +51,8 @@ public class BlocoComando : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     #region IBeginDragHandler implementation
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Entrei");
         Vector3 newPos = new Vector3(eventData.position.x,eventData.position.y,0f);
         this.transform.localPosition = newPos;
-        
     }
     #endregion
 

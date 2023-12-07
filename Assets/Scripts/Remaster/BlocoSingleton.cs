@@ -35,6 +35,8 @@ public class BlocoSingleton : MonoBehaviour
     private void GetValoresDropdown()
     {
         int qtdValoresJogados = CountActiveGameObjects(this.transform);
+        PlayerController.Instance.SetarQuantidadeDeBlocos(qtdValoresJogados - 2);
+        Debug.Log(qtdValoresJogados+" vezes jogadas");
 
         // Limpo as listas pois os valores repetem se nao limpar
         Linha.Clear();

@@ -18,17 +18,21 @@ public class PlayerController : MonoBehaviour
     int index = 0;
     int qtdCenouras = 0;
     int qtdEstrelas = 0;
+    int qtdBlocos = 0;
 
     float velocidade = 3f;
     float velocidadeFome = 3f;
     float energia;
+    float energiaInicial;
+    float qtdPassos = 0;
     string mensagemPerdeu;
+
 
     bool podeAndar = false;
 
     List<Destino> Destinos = new List<Destino>();
     
-    public UnityEngine.UI.Image barraEnergia;
+    public Image barraEnergia;
     public Image panelPerdeu;
     public Image panelGanhou;
     public Image imgEstrelas;
@@ -60,6 +64,7 @@ public class PlayerController : MonoBehaviour
         DefinirPosicaoInicialPlayer(0,3);
 
         anim = GetComponent<Animator>();
+        energiaInicial = energia;
         
        // PlayerPrefs.DeleteAll();
     }
@@ -96,6 +101,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].destino.y), velocidade * Time.deltaTime);
                 energia -= Time.deltaTime * velocidadeFome;
+                qtdPassos += Time.deltaTime * velocidadeFome;
                 anim.SetBool("anda", true);
                 anim.speed = 0.7f;
             }
@@ -104,6 +110,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].destino.x, transform.position.y), velocidade * Time.deltaTime);
                 energia -= Time.deltaTime * velocidadeFome;
+                qtdPassos += Time.deltaTime * velocidadeFome;
                 anim.SetBool("anda", true);
                 anim.speed = 1.5f;
             }
@@ -128,6 +135,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(Destinos[index].destino.x, transform.position.y), velocidade * Time.deltaTime);
                 energia -= Time.deltaTime * velocidadeFome;
+                qtdPassos += Time.deltaTime * velocidadeFome;
                 anim.SetBool("anda", true);
                 anim.speed = 1.5f;
             }
@@ -135,6 +143,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, Destinos[index].destino.y), velocidade * Time.deltaTime);
                 energia -= Time.deltaTime * velocidadeFome;
+                qtdPassos += Time.deltaTime * velocidadeFome;
                 anim.SetBool("anda", true);
                 anim.speed = 0.7f;
             }
@@ -174,8 +183,9 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void SetarEnergiaInicial(float energiaInicial) {
-        energia  = energiaInicial;
+    public void SetarEnergiaInicial(float energiaInicial1) {
+        energia  = energiaInicial1;
+        energiaInicial = energiaInicial1;
         txtVida.text = ((int)energia).ToString();
     }
 
@@ -187,11 +197,29 @@ public class PlayerController : MonoBehaviour
 
         panelPerdeu.transform.GetChild(0).GetChild(qtdFilhosPanel-1).GetComponent<TextMeshProUGUI>().text = mensagemPerdeu;
 
+
+        string motivoPerca = mensagemPerdeu == "Cuidado com as caixas"
+         ? "Caixa"
+         : mensagemPerdeu == "Cuidado com as armadilhas"
+             ? "Armadilha"
+             : "Estrelas Insuficientes";
         int faseSelecionada = PlayerPrefs.GetInt("FaseSelecionada");
 
         GLboardDatas controll = GameObject.FindGameObjectWithTag("ControladorGLBoard").GetComponent<GLboardDatas>();
-        controll.glboard.AddSectionInPhase(faseSelecionada.ToString(), STATUS_SECTION.DERROTA, qtdEstrelas, timeInit, DateTime.Now);
+        controll.glboard.AddSectionInPhase(
+            faseSelecionada.ToString(), 
+            STATUS_SECTION.DERROTA, 
+            qtdEstrelas, timeInit, 
+            DateTime.Now, 
+            Mathf.FloorToInt(qtdPassos),
+            Mathf.FloorToInt(energiaInicial-energia),
+            qtdBlocos,
+            motivoPerca);
         StartCoroutine(controll.glboard.SEND_USER_DATA());
+    }
+
+    public void SetarQuantidadeDeBlocos(int blocos) {
+        qtdBlocos = blocos;
     }
 
     public void AtivarAnimacaoDeDesmaio()
@@ -222,7 +250,16 @@ public class PlayerController : MonoBehaviour
 
         // Enviar Dados para o GLBoard
         GLboardDatas controll = GameObject.FindGameObjectWithTag("ControladorGLBoard").GetComponent<GLboardDatas>();
-        controll.glboard.AddSectionInPhase(FaseSelecionada.ToString(), STATUS_SECTION.VITORIA, qtdEstrelas, timeInit, DateTime.Now);
+        controll.glboard.AddSectionInPhase(
+            FaseSelecionada.ToString(),
+            STATUS_SECTION.VITORIA,
+            qtdEstrelas,
+            timeInit,
+            DateTime.Now,
+            Mathf.FloorToInt(qtdPassos),
+            Mathf.FloorToInt(energiaInicial - energia),
+            qtdBlocos,
+            "");
         StartCoroutine(controll.glboard.SEND_USER_DATA());
     }
 

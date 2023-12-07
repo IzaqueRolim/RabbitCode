@@ -4,7 +4,7 @@ using UnityEngine;
 
 // Autor: Izaque Rolim
 // Data: 27/08/23
-// Contato: irc.lic22@uea.edu.br | izaque.rolim.canavarro@gmail.com | 92988397831
+// Contato: irc.lic22@uea.edu.br | izaque.rolim.canavarro@gmail.com | 92985376083
 // Qualquer duvida, é so entrar em contato que eu respondo... 😊
 
 public class faseController : MonoBehaviour
