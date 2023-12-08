@@ -260,6 +260,7 @@ public class PlayerController : MonoBehaviour
             Mathf.FloorToInt(energiaInicial - energia),
             qtdBlocos,
             "");
+        controll.CalcularPorcentagemVitoria(FaseSelecionada.ToString());
         StartCoroutine(controll.glboard.SEND_USER_DATA());
     }
 
