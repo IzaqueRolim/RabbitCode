@@ -1,16 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
+[HelpURL("https://docs.unity3d.com/ScriptReference/HelpURLAttribute.html")]
 public class GLboardDatas : MonoBehaviour
 {
 
     public GLBoard glboard;
+
+    [Header("Adicione o Objeto que vai se movimentar")]
+    [Tooltip("Isso é uma variável de exemplo.")]
+
+    [Space(10)]
     public GameObject formUsuario;
+
+    [TextAreaAttribute]
+    public string text;
+
+    [Range(0, 10)]
+    public float minhaVariavelComFaixa;
 
     async void Start()
     {
@@ -89,12 +99,14 @@ public class GLboardDatas : MonoBehaviour
 
     public void EnviarNome(Text nome)
     {
-        glboard.SetPlayerData(nome.text,"",GENDER.OUTROS);
+        glboard.SetPlayerData(nome.text, "01/01/2000", GENDER.OUTROS);
+       // StartCoroutine(glboard.SEND_USER_DATA());
     }
     public void EnviarGenero(string genero)
     {
         GENDER gender = genero == "M" ? GENDER.MASCULINO : genero =="F"?GENDER.FEMININO:GENDER.OUTROS;
-        glboard.SetPlayerData(glboard.GetPlayerData().name, "", gender);
+        glboard.SetPlayerData(glboard.GetPlayerData().name, "01/01/2000", gender);
+        StartCoroutine(glboard.SEND_USER_DATA());
     }
 
     async void CriarFases()

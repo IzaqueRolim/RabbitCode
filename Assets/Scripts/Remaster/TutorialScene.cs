@@ -5,6 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class TutorialScene : MonoBehaviour
 {
+
+    string[] inventario = { "Item 1","Item 2","Item 3","Item 4" };
+    List<List<string>> inventario2 = new List<List<string>>();
+
+    Vector2 posicaoInicial  = new Vector2(0.2f,0.5f);
+
+    SpriteRenderer spriteRenderer;
+
+    private void Awake()
+    {
+        Debug.Log("começou");
+    }
     void Start()
     {
         //PlayerPrefs.SetInt("fezTutorial",0);

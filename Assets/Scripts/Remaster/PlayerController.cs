@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public Text txtCenouras;
     public Text txtEstrelas;
     public TextMeshProUGUI txtVida;
+    public Rigidbody2D rb;
 
     private Animator anim;
 
